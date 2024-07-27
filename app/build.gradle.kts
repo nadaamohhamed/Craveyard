@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias { libs.plugins.safeargs }
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -36,6 +38,30 @@ android {
 }
 
 dependencies {
+
+    //nav component
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    //retrofit
+    implementation (libs.gson)
+    implementation(libs.retrofit)
+    implementation (libs.converter.gson)
+
+    //room
+    implementation(libs.room)
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+    ksp(libs.room.compiler)
+
+
+    //coroutines
+
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    //glide
+    implementation (libs.glide)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
