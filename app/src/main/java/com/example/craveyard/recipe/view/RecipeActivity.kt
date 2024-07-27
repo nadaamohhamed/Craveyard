@@ -1,4 +1,4 @@
-package com.example.craveyard.Recipe.view
+package com.example.craveyard.recipe.view
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
