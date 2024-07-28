@@ -54,13 +54,16 @@ class SearchFragment : Fragment() {
 
 
                 Log.d("asd","6")
+
                 return true
             }
         })
         Log.d("asd","7")
 
+
         viewModel.recipes.observe(viewLifecycleOwner) {
             val adapter = SearchAdapter(it)
+
             recyclerView.layoutManager = LinearLayoutManager(context)
 
             recyclerView.adapter = adapter

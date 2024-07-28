@@ -10,7 +10,7 @@ object RetrofitHelper {
         .create()
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://www.themealdb.com/api/json/v1")
+        .baseUrl("https://www.themealdb.com")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

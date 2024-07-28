@@ -6,6 +6,6 @@ import com.example.craveyard.recipe.model.Recipe
 
 interface SearchRepository {
 
-    suspend fun search(query: String): List<Meal>
+    suspend fun search(query: String): Meals
 
 }

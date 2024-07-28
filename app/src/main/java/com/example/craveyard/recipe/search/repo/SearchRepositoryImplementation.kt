@@ -7,7 +7,7 @@ import com.example.craveyard.recipe.model.Meals
 import com.example.craveyard.recipe.model.Recipe
 
 class SearchRepositoryImplementation(private val remoteDataSource: RemoteDataSource) : SearchRepository {
-    override suspend fun search(query: String): List<Meal> {
+    override suspend fun search(query: String): Meals {
         Log.d("asd","4")
         return remoteDataSource.search(query)
 

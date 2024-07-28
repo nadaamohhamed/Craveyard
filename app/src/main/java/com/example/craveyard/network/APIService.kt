@@ -9,9 +9,9 @@ import retrofit2.http.Query
 interface APIService {
 
 
-    @GET("1/search")
-    fun search(
+    @GET("api/json/v1/1/search.php")
+    suspend fun search(
         @Query("s") query: String
-    ): List<Meal>
+    ): Meals
 
 }
