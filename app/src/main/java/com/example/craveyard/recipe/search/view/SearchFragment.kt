@@ -3,6 +3,7 @@ package com.example.craveyard.recipe.search.view
 import APIClient
 import RemoteDataSource
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +27,11 @@ class SearchFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_search, container, false)
+
+
+
         getViewModel()
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         val searchView = view.findViewById<SearchView>(R.id.searchView)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -34,22 +39,34 @@ class SearchFragment : Fragment() {
                 if (query != null) {
                     viewModel.search(query)
                 }
+
                 return true
             }
 
+
             override fun onQueryTextChange(newText: String?): Boolean {
+
                 if (newText != null) {
+
                     viewModel.search(newText)
+
                 }
+
+
+                Log.d("asd","6")
                 return true
             }
         })
+        Log.d("asd","7")
+
         viewModel.recipes.observe(viewLifecycleOwner) {
             val adapter = SearchAdapter(it)
             recyclerView.layoutManager = LinearLayoutManager(context)
+
             recyclerView.adapter = adapter
         }
         return view
+
     }
 
     private fun getViewModel() {

@@ -12,7 +12,7 @@ import com.example.craveyard.recipe.model.Meal
 import com.example.craveyard.recipe.model.Meals
 import com.example.craveyard.recipe.model.Recipe
 
-class SearchAdapter(val data: Meals) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(val data: List<Meal>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val MealImage: ImageView? = null
@@ -33,7 +33,8 @@ class SearchAdapter(val data: Meals) : RecyclerView.Adapter<SearchAdapter.ViewHo
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val meal = data.meals[position]
+        val meal = data[position]
+
         Glide.with(holder.getMealImage()!!)
             .load(meal.strMealThumb)
             .into(holder.getMealImage()!!)
@@ -42,7 +43,7 @@ class SearchAdapter(val data: Meals) : RecyclerView.Adapter<SearchAdapter.ViewHo
     }
 
     override fun getItemCount(): Int {
-        return data.meals.size
+        return data.size
     }
 
 

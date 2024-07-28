@@ -1,5 +1,6 @@
 package com.example.craveyard.recipe.search.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,13 +13,16 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel(private val searchRepository: SearchRepository) : ViewModel() {
 
-    private val _recipes = MutableLiveData<Meals>()
-    val recipes: LiveData<Meals> = _recipes
+    private val _recipes = MutableLiveData<List<Meal>>()
+    val recipes: LiveData<List<Meal>> = _recipes
 
     fun search(query: String) {
         viewModelScope.launch {
+            Log.d("asd","3")
             val response = searchRepository.search(query)
-            _recipes.value = response
+
+
+            _recipes.postValue(response)
         }
     }
 
