@@ -7,7 +7,6 @@ interface APIService {
 
 
     @GET("search.php")
-    fun search(): List<Recipe>
-
+    fun search(): Recipe
 
 }
