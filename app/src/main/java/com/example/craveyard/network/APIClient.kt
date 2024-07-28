@@ -5,7 +5,6 @@ import com.example.craveyard.recipe.model.Recipe
 
 object APIClient : RemoteDataSource {
     override suspend fun search(query: String): Meals {
-        Log.d("asd","5   $query")
         return RetrofitHelper.retrofitService.search(query)
     }
 

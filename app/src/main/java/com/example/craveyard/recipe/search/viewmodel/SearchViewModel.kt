@@ -18,8 +18,6 @@ class SearchViewModel(private val searchRepository: SearchRepository) : ViewMode
 
     fun search(query: String) {
         viewModelScope.launch {
-
-            Log.d("asd","3")
             val response = searchRepository.search(query)
             _recipes.postValue(response.meals)
         }
