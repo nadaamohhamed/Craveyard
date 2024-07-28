@@ -5,5 +5,12 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <!--  Toolbar Theme  -->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <!--  Menu Theme  -->
+    <style name="AppTheme.PopupOverlay" parent="android:TextAppearance.Widget.PopupMenu.Small">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="Theme.CraveYard" parent="Base.Theme.CraveYard" />
 </resources>
