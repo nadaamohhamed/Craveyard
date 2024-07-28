@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias { libs.plugins.safeargs }
+    alias (libs.plugins.safeargs)
     alias(libs.plugins.ksp)
 }
 
@@ -62,6 +62,9 @@ dependencies {
 
     //glide
     implementation (libs.glide)
+
+    //lottie
+    implementation (libs.lottie)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
