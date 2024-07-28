@@ -8,9 +8,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import com.example.craveyard.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RecipeActivity : AppCompatActivity() {
+
+   private lateinit var bottomNavigationView:BottomNavigationView
+   private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,9 +29,21 @@ class RecipeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "CraveYard"
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        bottomNavigationView=findViewById(R.id.bottomNavigationView)
+        navController=findNavController(R.id.recipe_nav_host)
+
+        bottomNavigationView.setupWithNavController(navController)
+
     }
 
 
@@ -33,15 +54,4 @@ class RecipeActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_logout -> {
-                return true
-            }
-            R.id.action_about -> {
-
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 }

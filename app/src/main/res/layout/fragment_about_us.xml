@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".AboutUsFragment">
+    tools:context=".recipe.fragments.AboutUsFragment">
 
     <TextView
         android:id="@+id/app_description"
