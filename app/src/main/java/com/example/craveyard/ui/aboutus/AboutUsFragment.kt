@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
+import com.example.craveyard.recipe.about_us.AboutAdapter
+import com.example.craveyard.recipe.about_us.Dev
 
 
 class AboutUsFragment : Fragment() {
