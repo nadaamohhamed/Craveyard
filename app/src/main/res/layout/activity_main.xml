@@ -15,10 +15,10 @@
         android:background="@color/light_red"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
