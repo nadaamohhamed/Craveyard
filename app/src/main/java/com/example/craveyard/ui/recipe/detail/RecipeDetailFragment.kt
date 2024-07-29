@@ -1,4 +1,4 @@
-package com.example.craveyard.recipe.details.view
+package com.example.craveyard.ui.recipe.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
