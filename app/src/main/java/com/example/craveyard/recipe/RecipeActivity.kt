@@ -32,7 +32,6 @@ class RecipeActivity : AppCompatActivity(){
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "CraveYard"
-
     }
 
     override fun onStart() {
