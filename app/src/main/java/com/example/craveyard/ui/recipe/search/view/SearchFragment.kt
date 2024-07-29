@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
@@ -22,6 +23,9 @@ import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory
 
 class SearchFragment : Fragment() , ClickHandler {
     private lateinit var viewModel: SearchViewModel
+    private lateinit var adapter : SearchAdapter
+
+    private var  meals :ArrayList<Meal> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,10 +52,22 @@ class SearchFragment : Fragment() , ClickHandler {
             }
         })
         viewModel.recipes.observe(viewLifecycleOwner) {
-            val adapter = SearchAdapter(it,this)
-            recyclerView.layoutManager = LinearLayoutManager(context)
-            recyclerView.adapter = adapter
+            if (it!=null){
+                meals.clear()
+                meals.addAll(it)
+            }
+            else{
+                meals.clear()
+            }
+            adapter.notifyDataSetChanged()
+
         }
+
+        adapter = SearchAdapter(meals,this)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = adapter
+
+
         return view
     }
     private fun getViewModel() {
@@ -62,7 +78,9 @@ class SearchFragment : Fragment() , ClickHandler {
 
 
     override fun onMealClick(meal: Meal) {
-            Log.d("asd","${meal.strMeal}")
+
+        val action=SearchFragmentDirections.actionSearchIconToRecipeDetailFragment(meal)
+        findNavController().navigate(action)
     }
 
 

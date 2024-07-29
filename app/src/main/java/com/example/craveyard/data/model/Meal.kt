@@ -54,6 +54,6 @@ data class Meal(
     val strMeasure8: String,
     val strMeasure9: String,
     val strSource: Any?,
-    val strTags: String,
+    val strTags: String?,
     val strYoutube: String
 ) :Serializable
