@@ -1,4 +1,4 @@
-package com.example.craveyard.recipe.aboutus
+package com.example.craveyard.recipe.about_us
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -16,13 +16,8 @@
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/favorite_icon"
         android:name="com.example.craveyard.recipe.favorite.view.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
-    <fragment
-        android:id="@+id/mealDetailsFragment"
-        android:name="com.example.craveyard.recipe.meal_details.MealDetailsFragment"
-        android:label="fragment_meal_details"
-        tools:layout="@layout/fragment_meal_details" />
 </navigation>
