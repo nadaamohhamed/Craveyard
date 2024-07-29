@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
@@ -62,7 +63,9 @@ class SearchFragment : Fragment() , ClickHandler {
 
 
     override fun onMealClick(meal: Meal) {
-            Log.d("asd","${meal.strMeal}")
+
+        val action=SearchFragmentDirections.actionSearchIconToRecipeDetailFragment(meal)
+        findNavController().navigate(action)
     }
 
 

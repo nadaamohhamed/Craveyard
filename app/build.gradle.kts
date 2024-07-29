@@ -66,6 +66,20 @@ dependencies {
     //lottie
     implementation (libs.lottie)
 
+
+
+    //read more
+
+    implementation (libs.readmore.textview)
+
+
+
+    //youtube player
+    implementation (libs.core)
+
+
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
