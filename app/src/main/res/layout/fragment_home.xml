@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_body"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recipe.fragments.HomeFragment"/>
+    android:orientation="vertical"
+    tools:context=".recipe.fragments.HomeFragment">
+
+    <TextView
+        android:id="@+id/trending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/trending_now"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <include
+        android:id="@+id/trending_meal"
+        layout="@layout/custom_search_item" />
+
+    <TextView
+        android:id="@+id/list_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/find_best_recipes_for_cooking"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favorite_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp" />
+
+
+</LinearLayout>
