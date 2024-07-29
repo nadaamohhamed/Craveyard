@@ -1,4 +1,4 @@
-package com.example.craveyard.network
+package com.example.craveyard.utilities.network
 
 import com.example.craveyard.recipe.model.Meal
 import com.example.craveyard.recipe.model.Meals
