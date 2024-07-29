@@ -1,4 +1,4 @@
-package com.example.craveyard.authentication.fragments
+package com.example.craveyard.splash
 
 
 import android.os.Bundle

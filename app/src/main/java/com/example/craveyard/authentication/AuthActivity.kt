@@ -1,4 +1,4 @@
-package com.example.craveyard.authentication.view
+package com.example.craveyard.authentication
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

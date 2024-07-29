@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
     android:id="@+id/home_body"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".recipe.fragments.HomeFragment">
+    tools:context=".recipe.home.view.HomeFragment">
 
     <TextView
-        android:id="@+id/trending"
+        android:id="@+id/trending_meal_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -19,7 +22,7 @@
 
     <include
         android:id="@+id/trending_meal"
-        layout="@layout/custom_search_item" />
+        layout="@layout/custom_meal_item" />
 
     <TextView
         android:id="@+id/list_text"
@@ -31,10 +34,10 @@
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favorite_body"
+        android:id="@+id/rv_meals"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp" />
 
-
 </LinearLayout>
+</ScrollView>

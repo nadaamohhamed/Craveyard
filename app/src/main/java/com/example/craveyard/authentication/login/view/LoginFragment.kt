@@ -1,4 +1,4 @@
-package com.example.craveyard.recipe.fragments
+package com.example.craveyard.authentication.login.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,14 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.craveyard.R
 
-class FavoriteFragment : Fragment() {
+// TODO: Rename parameter arguments, choose names that match
+
+class LoginFragment : Fragment() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
+
+// comment
 
 }

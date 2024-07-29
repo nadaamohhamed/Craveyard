@@ -5,16 +5,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitHelper {
 
-    private val gson = GsonBuilder()
+    const val BASE_URL = "https://www.themealdb.com"
+
+    val gson = GsonBuilder()
         .serializeNulls()
         .create()
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://www.themealdb.com")
-        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
-
-//    val service = retrofit.create(SimpleService::class.java)
 
     val retrofitService: APIService by lazy {
         retrofit.create(APIService::class.java)
