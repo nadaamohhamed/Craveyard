@@ -29,7 +29,7 @@ class SplashFragment : Fragment() {
                 .setPopUpTo(R.id.splashFragment,inclusive = true)
                 .build())
 
-        },6500)
+        },3000)
 
 
         return view
