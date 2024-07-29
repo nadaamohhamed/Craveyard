@@ -3,6 +3,7 @@ package com.example.craveyard.recipe.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -32,8 +33,12 @@ class MealsAdapter (
             .load(meal.strMealThumb)
             .into(holder.getMealImage())
 
+        // TODO:check if favorite: ic_favorite else ic_favorite_border
+        holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite)
+
         holder.itemView.setOnClickListener {
-            // go to recipe details fragment
+            // go to recipe details fragment by nav controller
+//            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToRecipeDetailsFragment(meal))
         }
     }
 
@@ -43,6 +48,8 @@ class MealsAdapter (
     ) : RecyclerView.ViewHolder(meal){
         private var mealName: TextView = meal.findViewById(R.id.recipe_name)
         private var mealImage: ImageView = meal.findViewById(R.id.recipe_image)
+        private val favoriteBtn: ImageButton = meal.findViewById(R.id.favorite_btn)
+
 
         fun getMealName(): TextView{
             return mealName
@@ -50,6 +57,10 @@ class MealsAdapter (
 
         fun getMealImage(): ImageView {
             return mealImage
+        }
+
+        fun getFavoriteBtn(): ImageButton {
+            return favoriteBtn
         }
 
     }

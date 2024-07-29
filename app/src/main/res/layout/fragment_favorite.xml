@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".recipe.favorite.FavoriteFragment">
+    tools:context=".recipe.favorite.view.FavoriteFragment">
 
     <TextView
         android:id="@+id/favorite_list_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="30dp"
         android:text="@string/favorite_recipes"
         android:textSize="34sp"
         android:textStyle="bold" />
@@ -19,8 +19,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorites"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp" />
+
+    <TextView
+        android:id="@+id/emptyText"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp" />
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:text="@string/empty_favorite_list"
+        android:visibility="visible" />
 
 
 </LinearLayout>

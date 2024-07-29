@@ -3,7 +3,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/favorites"
         android:id="@+id/favourite_icon"
-        android:icon="@drawable/ic_favorites"
+        android:icon="@drawable/ic_favorite"
         />
     <item android:title="@string/home"
         android:icon="@drawable/ic_home"

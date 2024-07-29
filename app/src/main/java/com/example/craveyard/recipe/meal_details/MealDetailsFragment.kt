@@ -1,4 +1,4 @@
-package com.example.craveyard.recipe.mealdetails
+package com.example.craveyard.recipe.meal_details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

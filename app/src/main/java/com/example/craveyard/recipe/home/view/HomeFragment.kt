@@ -51,9 +51,9 @@ class HomeFragment : Fragment() {
         viewModel.getRandomMeal()
         val trendingMeal = view.findViewById<CardView>(R.id.trending_meal)
         viewModel.randomMeal.observe(viewLifecycleOwner) {
-            Log.d("TAG", "onCreateView: $it")
+//            Log.d("TAG", "onCreateView: $it")
 
-            // set data
+            // initialize trending meal card
             val meal = it[0]
             trendingMeal.findViewById<TextView>(R.id.recipe_name).text = meal.strMeal
             val mealImg = trendingMeal.findViewById<ImageView>(R.id.recipe_image)
@@ -61,7 +61,6 @@ class HomeFragment : Fragment() {
                 .load(meal.strMealThumb)
                 .into(mealImg)
 
-            // set click listener
             trendingMeal.setOnClickListener {
                 // go to recipe details fragment by nav controller
 //                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMealDetailsFragment())

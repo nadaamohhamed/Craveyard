@@ -9,4 +9,10 @@
     <string name="trending_now">Trending now</string>
     <string name="find_best_recipes_for_cooking">Find best recipes for cooking</string>
     <string name="favorite_recipes">Favorite recipes</string>
+    <string name="logout">Logout</string>
+    <string name="about">About</string>
+    <string name="recipe_image">Recipe Image</string>
+    <string name="recipe_name">Recipe Name</string>
+    <string name="favorite_icon">Favorite Icon</string>
+    <string name="empty_favorite_list">No favorites yet, start adding some.</string>
 </resources>
