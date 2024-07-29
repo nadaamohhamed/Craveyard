@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
-import com.example.craveyard.network.APIClient
+import com.example.craveyard.utilities.network.APIClient
 import com.example.craveyard.recipe.adapters.MealsAdapter
 import com.example.craveyard.recipe.home.repo.HomeRepository
 import com.example.craveyard.recipe.home.viewmodel.HomeViewModel

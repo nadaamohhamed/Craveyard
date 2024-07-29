@@ -1,7 +1,7 @@
 package com.example.craveyard.recipe.home.repo
 
 
-import com.example.craveyard.network.RemoteDataSource
+import com.example.craveyard.utilities.network.RemoteDataSource
 import com.example.craveyard.recipe.model.Meal
 import com.example.craveyard.recipe.model.Meals
 

@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.network.APIClient
+import com.example.craveyard.utilities.network.APIClient
 import com.example.craveyard.recipe.search.clickhandler.ClickHandler
 import com.example.craveyard.recipe.model.Meal
 import com.example.craveyard.recipe.search.adapter.SearchAdapter
