@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".recipe.favorite.view.FavoriteFragment">
+    tools:context=".ui.recipe.favorite.view.FavoriteFragment">
 
     <TextView
         android:id="@+id/favorite_list_text"
