@@ -1,7 +1,6 @@
 package com.example.craveyard.recipe.search.view
 
-import APIClient
-import RemoteDataSource
+import com.example.craveyard.recipe.search.repo.SearchAPIClient
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,12 +12,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
+import com.example.craveyard.recipe.clickhandler.ClickHandler
+import com.example.craveyard.recipe.model.Meal
 import com.example.craveyard.recipe.search.adapter.SearchAdapter
 import com.example.craveyard.recipe.search.repo.SearchRepositoryImplementation
 import com.example.craveyard.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.recipe.search.viewmodel.SearchViewModelFactory
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment() ,ClickHandler{
     private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(
@@ -46,14 +47,22 @@ class SearchFragment : Fragment() {
             }
         })
         viewModel.recipes.observe(viewLifecycleOwner) {
-            val adapter = SearchAdapter(it)
+            val adapter = SearchAdapter(it,this)
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter = adapter
         }
         return view
     }
     private fun getViewModel() {
-        val searchViewModelFactory = SearchViewModelFactory(searchRepository = SearchRepositoryImplementation(remoteDataSource = APIClient))
+        val searchViewModelFactory = SearchViewModelFactory(searchRepository = SearchRepositoryImplementation(remoteDataSource = SearchAPIClient))
         viewModel = ViewModelProvider(this, searchViewModelFactory).get(SearchViewModel::class.java)
     }
+
+
+
+    override fun onMealClick(meal: Meal) {
+            Log.d("asd","${meal.strMeal}")
+    }
+
+
 }

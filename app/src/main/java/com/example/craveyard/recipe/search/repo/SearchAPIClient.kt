@@ -1,9 +1,9 @@
-import android.util.Log
-import com.example.craveyard.recipe.model.Meal
-import com.example.craveyard.recipe.model.Meals
-import com.example.craveyard.recipe.model.Recipe
+package com.example.craveyard.recipe.search.repo
 
-object APIClient : RemoteDataSource {
+import RetrofitHelper
+import com.example.craveyard.recipe.model.Meals
+
+object SearchAPIClient : RemoteDataSearch {
     override suspend fun search(query: String): Meals {
         return RetrofitHelper.retrofitService.search(query)
     }

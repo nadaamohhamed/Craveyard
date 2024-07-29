@@ -1,5 +1,8 @@
 package com.example.craveyard.recipe.model
 
+import android.os.Parcelable
+import java.io.Serializable
+
 data class Meal(
     val dateModified: Any?,
     val idMeal: String,
@@ -54,4 +57,4 @@ data class Meal(
     val strSource: Any?,
     val strTags: String,
     val strYoutube: String
-)
+) :Serializable
