@@ -1,5 +1,6 @@
 package com.example.craveyard.ui.recipe.home.view
 
+import APIClient
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,19 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
-<<<<<<< Updated upstream:app/src/main/java/com/example/craveyard/recipe/home/view/HomeFragment.kt
-import com.example.craveyard.utilities.network.APIClient
-import com.example.craveyard.recipe.adapters.MealsAdapter
-import com.example.craveyard.recipe.home.repo.HomeRepository
-import com.example.craveyard.recipe.home.viewmodel.HomeViewModel
-import com.example.craveyard.recipe.home.viewmodel.HomeViewModelFactory
-=======
-import com.example.craveyard.data.network.APIClient
+
 import com.example.craveyard.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.home.repo.HomeRepository
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
->>>>>>> Stashed changes:app/src/main/java/com/example/craveyard/ui/home/view/HomeFragment.kt
 
 
 class HomeFragment : Fragment() {

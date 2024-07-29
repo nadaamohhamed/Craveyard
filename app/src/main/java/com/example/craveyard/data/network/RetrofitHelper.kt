@@ -1,8 +1,3 @@
-<<<<<<<< Updated upstream:app/src/main/java/com/example/craveyard/utilities/network/RetrofitHelper.kt
-import com.example.craveyard.utilities.network.APIService
-========
-import com.example.craveyard.data.network.APIService
->>>>>>>> Stashed changes:app/src/main/java/com/example/craveyard/data/network/RetrofitHelper.kt
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

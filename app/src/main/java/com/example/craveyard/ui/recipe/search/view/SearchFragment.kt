@@ -1,5 +1,6 @@
 package com.example.craveyard.ui.recipe.search.view
 
+import APIClient
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,23 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-<<<<<<< Updated upstream:app/src/main/java/com/example/craveyard/recipe/search/view/SearchFragment.kt
-import com.example.craveyard.utilities.network.APIClient
-import com.example.craveyard.recipe.search.clickhandler.ClickHandler
-import com.example.craveyard.recipe.model.Meal
-import com.example.craveyard.recipe.search.adapter.SearchAdapter
-import com.example.craveyard.recipe.search.repo.SearchRepositoryImplementation
-import com.example.craveyard.recipe.search.viewmodel.SearchViewModel
-import com.example.craveyard.recipe.search.viewmodel.SearchViewModelFactory
-=======
-import com.example.craveyard.data.network.APIClient
+
 import com.example.craveyard.utils.clickhandler.ClickHandler
 import com.example.craveyard.data.model.Meal
 import com.example.craveyard.utils.adapter.SearchAdapter
 import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImplementation
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory
->>>>>>> Stashed changes:app/src/main/java/com/example/craveyard/ui/search/view/SearchFragment.kt
 
 class SearchFragment : Fragment() , ClickHandler {
     private lateinit var viewModel: SearchViewModel
