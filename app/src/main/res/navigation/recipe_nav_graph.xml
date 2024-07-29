@@ -3,16 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recipe_nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/home_icon">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/home_icon"
         android:name="com.example.craveyard.recipe.home.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/searchFragment"
+        android:id="@+id/search_icon"
         android:name="com.example.craveyard.recipe.search.view.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/favorite_icon"
+        android:name="com.example.craveyard.recipe.favorite.view.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

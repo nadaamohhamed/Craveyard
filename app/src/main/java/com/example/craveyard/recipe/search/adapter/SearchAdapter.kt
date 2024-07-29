@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
-import com.example.craveyard.recipe.clickhandler.ClickHandler
+import com.example.craveyard.recipe.search.clickhandler.ClickHandler
 import com.example.craveyard.recipe.model.Meal
 
 
-class SearchAdapter(val data: List<Meal>,var clickHandler: ClickHandler) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(val data: List<Meal>, var clickHandler: ClickHandler) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View, data: List<Meal>, clickHandler: ClickHandler) : RecyclerView.ViewHolder(itemView) {
         private val MealImage: ImageView? = null
@@ -34,7 +34,7 @@ class SearchAdapter(val data: List<Meal>,var clickHandler: ClickHandler) : Recyc
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_search_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_meal_item, parent, false)
         return ViewHolder(view,data,clickHandler)
     }
 
