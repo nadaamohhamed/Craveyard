@@ -1,4 +1,4 @@
-import com.example.craveyard.network.APIService
+import com.example.craveyard.utilities.network.APIService
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
