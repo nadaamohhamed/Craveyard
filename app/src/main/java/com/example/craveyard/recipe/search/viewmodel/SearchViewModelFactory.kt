@@ -9,6 +9,6 @@ class SearchViewModelFactory(private val searchRepository: SearchRepository) : V
         if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
             return SearchViewModel(searchRepository) as T
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
+        throw IllegalArgumentException("Unknown Search ViewModel class")
     }
 }

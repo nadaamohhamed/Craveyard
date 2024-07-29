@@ -1,6 +1,5 @@
 package com.example.craveyard.recipe.search.view
 
-import com.example.craveyard.recipe.search.repo.SearchAPIClient
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,14 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.recipe.clickhandler.ClickHandler
+import com.example.craveyard.network.APIClient
+import com.example.craveyard.recipe.search.clickhandler.ClickHandler
 import com.example.craveyard.recipe.model.Meal
 import com.example.craveyard.recipe.search.adapter.SearchAdapter
 import com.example.craveyard.recipe.search.repo.SearchRepositoryImplementation
 import com.example.craveyard.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.recipe.search.viewmodel.SearchViewModelFactory
 
-class SearchFragment : Fragment() ,ClickHandler{
+class SearchFragment : Fragment() , ClickHandler {
     private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(
@@ -54,7 +54,7 @@ class SearchFragment : Fragment() ,ClickHandler{
         return view
     }
     private fun getViewModel() {
-        val searchViewModelFactory = SearchViewModelFactory(searchRepository = SearchRepositoryImplementation(remoteDataSource = SearchAPIClient))
+        val searchViewModelFactory = SearchViewModelFactory(searchRepository = SearchRepositoryImplementation(remoteDataSource = APIClient))
         viewModel = ViewModelProvider(this, searchViewModelFactory).get(SearchViewModel::class.java)
     }
 
