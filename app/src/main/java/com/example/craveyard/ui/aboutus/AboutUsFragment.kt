@@ -18,6 +18,7 @@ class AboutUsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_about_us, container, false)
         val Devs = arrayOf(
@@ -27,8 +28,11 @@ class AboutUsFragment : Fragment() {
             Dev("Eslam Magdy", R.drawable.male)
         )
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+
+        recyclerView.setHasFixedSize(true)
         recyclerView.adapter = AboutAdapter(Devs)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+
         return view
     }
 }

@@ -3,6 +3,7 @@ package com.example.craveyard.ui.recipe
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -19,6 +20,7 @@ class RecipeActivity : AppCompatActivity(){
 
     private lateinit var bottomNavigationView : BottomNavigationView
     private lateinit var navController : NavController
+    private lateinit var  toolbar:Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,7 @@ class RecipeActivity : AppCompatActivity(){
         }
 
         // initialize toolbar
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+         toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "CraveYard"
     }
@@ -44,7 +46,24 @@ class RecipeActivity : AppCompatActivity(){
         navController = findNavController(R.id.recipe_nav_host)
         bottomNavigationView.setupWithNavController(navController)
 
+
+        navController.addOnDestinationChangedListener(){_,destination,_ ->
+            if(destination.id == R.id.recipeDetailFragment || destination.id==R.id.aboutUsFragment) {
+
+                bottomNavigationView.visibility = View.GONE
+                toolbar.visibility=View.GONE
+
+            } else {
+
+                bottomNavigationView.visibility = View.VISIBLE
+                toolbar.visibility=View.VISIBLE
+            }
+
+
+        }
+
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
