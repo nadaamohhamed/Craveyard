@@ -53,6 +53,7 @@ class RecipeDetailFragment : Fragment() {
         reciepeText.text="Recipe details:\n${meal.strInstructions}"
 
 
+
         youTubePlayerView.addYouTubePlayerListener(object :AbstractYouTubePlayerListener(){
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 super.onReady(youTubePlayer)
