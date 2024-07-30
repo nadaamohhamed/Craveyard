@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.recipe.about.Dev
+import com.example.craveyard.data.model.Dev
 
 class AboutAdapter(val data: Array<Dev>) : RecyclerView.Adapter<AboutAdapter.ViewHolder>() {
 

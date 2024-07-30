@@ -1,9 +1,7 @@
 package com.example.craveyard.ui.recipe.search.view
 
 import APIClient
-import android.R.attr.data
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

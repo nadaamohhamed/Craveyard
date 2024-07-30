@@ -1,4 +1,4 @@
-package com.example.craveyard.recipe.about
+package com.example.craveyard.data.model
 
 data class Dev(
     val name: String,

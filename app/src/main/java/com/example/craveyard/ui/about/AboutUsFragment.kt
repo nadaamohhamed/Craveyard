@@ -6,11 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.utils.adapter.AboutAdapter
-import com.example.craveyard.recipe.about.Dev
+import com.example.craveyard.data.model.Dev
 
 
 class AboutUsFragment : Fragment() {
