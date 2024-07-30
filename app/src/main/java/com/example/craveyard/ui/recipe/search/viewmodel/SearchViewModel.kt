@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.craveyard.data.model.Meal
+import com.example.craveyard.data.model.meal.Meal
 import com.example.craveyard.ui.recipe.search.repo.SearchRepository
 import kotlinx.coroutines.launch
 

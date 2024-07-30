@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
 import com.example.craveyard.utils.clickhandler.ClickHandler
-import com.example.craveyard.data.model.Meal
+import com.example.craveyard.data.model.meal.Meal
 
 
 class SearchAdapter(val data: List<Meal>, var clickHandler: ClickHandler) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {

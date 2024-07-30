@@ -15,7 +15,7 @@
             app:destination="@id/recipeDetailFragment" />
         <argument
             android:name="meal"
-            app:argType="com.example.craveyard.data.model.Meal" />
+            app:argType="com.example.craveyard.data.model.meal.Meal" />
     </fragment>
     <fragment
         android:id="@+id/search_icon"
@@ -37,7 +37,7 @@
             app:destination="@id/recipeDetailFragment" />
         <argument
             android:name="meal"
-            app:argType="com.example.craveyard.data.model.Meal" />
+            app:argType="com.example.craveyard.data.model.meal.Meal" />
     </fragment>
 
     <fragment
@@ -52,6 +52,6 @@
         tools:layout="@layout/fragment_recipe_detail" >
         <argument
             android:name="meal"
-            app:argType="com.example.craveyard.data.model.Meal" />
+            app:argType="com.example.craveyard.data.model.meal.Meal" />
     </fragment>
 </navigation>

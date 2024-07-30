@@ -1,9 +1,7 @@
 package com.example.craveyard.ui.recipe.search.view
 
 import APIClient
-import android.R.attr.data
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.data.model.Meal
+import com.example.craveyard.data.model.meal.Meal
 import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImplementation
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory

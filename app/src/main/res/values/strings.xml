@@ -16,4 +16,6 @@
     <string name="favorite_icon">Favorite Icon</string>
     <string name="empty_favorite_list">No favorites yet, start adding some.</string>
     <string name="empty_result">No results found.</string>
+    <string name="user_image">User Image</string>
+    <string name="username">Username</string>
 </resources>
