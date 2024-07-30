@@ -57,8 +57,16 @@ class RecipeDetailFragment : Fragment() {
         youTubePlayerView.addYouTubePlayerListener(object :AbstractYouTubePlayerListener(){
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 super.onReady(youTubePlayer)
-                val videoid=meal.strYoutube.split("v=")[1]
-                youTubePlayer.loadVideo(videoid,0f)
+
+
+
+                if(meal.strYoutube!=""){
+                    val array=meal.strYoutube.split("v=")
+                    youTubePlayer.loadVideo(array[1],0f)
+                }else
+                    youTubePlayer.loadVideo("",0f)
+
+
             }
         })
 
