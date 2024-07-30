@@ -1,3 +1,6 @@
+package com.example.craveyard.network
+
+import APIService
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

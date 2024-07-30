@@ -39,6 +39,10 @@ class HomeFragment : Fragment(), ClickHandler{
         super.onCreate(savedInstanceState)
         // initialize view model
         initializeViewModel()
+
+        // get data
+        viewModel.getAllMeals()
+        viewModel.getRandomMeal()
     }
 
 
@@ -59,7 +63,6 @@ class HomeFragment : Fragment(), ClickHandler{
 
     private fun initializeAllMealsView(view: View) {
         // initialize meals recycler view
-        viewModel.getAllMeals()
         val rv = view.findViewById<RecyclerView>(R.id.rv_meals)
 
         viewModel.recipes.observe(viewLifecycleOwner) {
@@ -71,7 +74,6 @@ class HomeFragment : Fragment(), ClickHandler{
 
     private fun initializeTrendingMealView(view: View) {
         // initialize trending random meal card
-        viewModel.getRandomMeal()
         val trendingMeal = view.findViewById<CardView>(R.id.trending_meal)
 
         viewModel.randomMeal.observe(viewLifecycleOwner) {
