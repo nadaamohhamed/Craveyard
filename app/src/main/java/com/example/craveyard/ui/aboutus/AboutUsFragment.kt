@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
@@ -13,6 +14,7 @@ import com.example.craveyard.recipe.about_us.Dev
 
 
 class AboutUsFragment : Fragment() {
+    private lateinit var adapter: AboutAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,12 +29,10 @@ class AboutUsFragment : Fragment() {
             Dev("Omar Ramadan", R.drawable.male),
             Dev("Eslam Magdy", R.drawable.male)
         )
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = AboutAdapter(Devs)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView2)
+        adapter = AboutAdapter(Devs)
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
+        recyclerView.adapter = adapter
         return view
     }
 }
