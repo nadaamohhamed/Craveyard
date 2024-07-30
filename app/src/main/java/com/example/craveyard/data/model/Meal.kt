@@ -1,4 +1,4 @@
-package com.example.craveyard.data.model.meal
+package com.example.craveyard.data.model
 
 import java.io.Serializable
 

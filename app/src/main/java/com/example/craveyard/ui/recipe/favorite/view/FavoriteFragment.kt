@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
-import com.example.craveyard.data.model.meal.Meal
+import com.example.craveyard.data.model.Meal
 import com.example.craveyard.utils.clickhandler.ClickHandler
 
 

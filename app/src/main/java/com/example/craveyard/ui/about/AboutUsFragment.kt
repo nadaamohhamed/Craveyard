@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.utils.adapter.AboutAdapter
-import com.example.craveyard.data.model.developer.Dev
+import com.example.craveyard.data.model.Dev
 
 
 class AboutUsFragment : Fragment() {
