@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
 import com.example.craveyard.data.model.Meal
+import com.example.craveyard.ui.recipe.home.view.HomeFragmentDirections
+import com.example.craveyard.utils.clickhandler.ClickHandler
 
 
-class FavoriteFragment : Fragment() {
+class FavoriteFragment : Fragment(), ClickHandler {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,7 +25,7 @@ class FavoriteFragment : Fragment() {
 
         // get favorites user list and inject to meals adapter
         val favoriteList = ArrayList<Meal>()
-//        val adapter = MealsAdapter(favoriteList)
+//        val adapter = MealsAdapter(favoriteList, this)
 
         // initialize recycler view
 //        val rv = view.findViewById<RecyclerView>(R.id.rv_favorites)
@@ -34,6 +37,11 @@ class FavoriteFragment : Fragment() {
         emptyText.visibility = if (favoriteList.isEmpty()) View.VISIBLE else View.GONE
 
         return view
+    }
+
+    override fun onMealClick(meal: Meal) {
+        val action = FavoriteFragmentDirections.actionFavoriteIconToRecipeDetailFragment(meal)
+        findNavController().navigate(action)
     }
 
 }

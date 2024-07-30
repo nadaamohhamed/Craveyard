@@ -59,7 +59,6 @@ class RecipeActivity : AppCompatActivity(){
                 toolbar.visibility=View.VISIBLE
             }
 
-
         }
 
     }

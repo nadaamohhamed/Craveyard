@@ -99,14 +99,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/detail_category"
                 app:readMoreColor="#3F51B5"
                 app:readMoreMaxLine="4"
-                app:readMoreText="Ream more" />
+                app:readMoreText="Read more" />
 
 
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/youtube_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
+                android:fitsSystemWindows="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/read_more" />

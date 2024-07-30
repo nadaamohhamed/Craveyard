@@ -1,7 +1,6 @@
-package com.example.craveyard.recipe.clickhandler
+package com.example.craveyard.utils.clickhandler
 
 import com.example.craveyard.data.model.Meal
-import com.example.craveyard.utils.clickhandler.ClickHandler
 
 class ClickHandlerImplementation : ClickHandler {
     override fun onMealClick(meal: Meal) {
