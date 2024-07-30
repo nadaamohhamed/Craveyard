@@ -1,5 +1,5 @@
 [versions]
-agp = "8.5.1"
+agp = "8.3.0"
 kotlin = "1.9.21"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -17,6 +17,14 @@ ksp-version= "1.9.21-1.0.15"
 kotlinxCoroutinesAndroid = "1.7.3"
 lifecycleViewmodelKtx = "2.8.4"
 lottieVersion = "6.4.1"
+googleService = "4.4.2"
+fireBase="33.1.2"
+firebaseCommonKtx = "21.0.0"
+firebaseAuthKtx = "23.0.0"
+databindingCommon = "8.5.1"
+kotlinPlugin = "1.8.10"
+analytics="22.0.2"
+firebaseFirestoreKtx = "25.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,6 +53,19 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottieVersion" }
 
+fireBase= { module = "com.google.firebase:firebase-bom" , version.ref= "fireBase"}
+
+analytics = { module = "com.google.firebase:firebase-analytics",version.ref="analytics"}
+auth = { module = "com.google.firebase:firebase-auth"}
+firestore = { module = "com.google.firebase:firebase-firestore"}
+firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebaseCommonKtx" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
+androidx-databinding-common = { group = "androidx.databinding", name = "databinding-common", version.ref = "databindingCommon" }
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+
+
+
+
 
 
 [plugins]
@@ -52,3 +73,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationFragmentKtx" }
 ksp = {id = "com.google.devtools.ksp",version.ref="ksp-version"}
+google = {id = "com.google.gms.google-services",version.ref = "googleService"}
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlinPlugin"  }
+
