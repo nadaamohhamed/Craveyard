@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_home"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
-<LinearLayout
-    android:id="@+id/home_body"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".ui.recipe.home.view.HomeFragment">
 
-    <TextView
-        android:id="@+id/trending_meal_text"
+    <LinearLayout
+        android:id="@+id/home_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:text="@string/trending_now"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        tools:context=".ui.recipe.home.view.HomeFragment">
 
-    <include
-        android:id="@+id/trending_meal"
-        layout="@layout/custom_meal_item"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp" />
+        <TextView
+            android:id="@+id/trending_meal_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/trending_now"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/list_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:text="@string/find_best_recipes_for_cooking"
-        android:textColor="@color/black"
-        android:textSize="27sp"
-        android:textStyle="bold" />
+        <include
+            android:id="@+id/trending_meal"
+            layout="@layout/custom_meal_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_meals"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp" />
+        <TextView
+            android:id="@+id/list_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/find_best_recipes_for_cooking"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_meals"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp" />
+
+    </LinearLayout>
 </ScrollView>

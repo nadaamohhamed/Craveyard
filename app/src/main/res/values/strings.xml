@@ -15,4 +15,5 @@
     <string name="recipe_name">Recipe Name</string>
     <string name="favorite_icon">Favorite Icon</string>
     <string name="empty_favorite_list">No favorites yet, start adding some.</string>
+    <string name="empty_result">No results found.</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.craveyard.ui.aboutus
+package com.example.craveyard.ui.about
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.recipe.about_us.AboutAdapter
-import com.example.craveyard.recipe.about_us.Dev
+import com.example.craveyard.utils.adapter.AboutAdapter
+import com.example.craveyard.recipe.about.Dev
 
 
 class AboutUsFragment : Fragment() {
@@ -20,7 +20,7 @@ class AboutUsFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_about_us, container, false)
+        val view = inflater.inflate(R.layout.fragment_about, container, false)
         val Devs = arrayOf(
             Dev("Nada Mohammed", R.drawable.female),
             Dev("Beshoy Mamdouh", R.drawable.male),

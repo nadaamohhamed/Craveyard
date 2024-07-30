@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_home_icon_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
+        <argument
+            android:name="meal"
+            app:argType="com.example.craveyard.data.model.Meal" />
     </fragment>
     <fragment
         android:id="@+id/search_icon"
@@ -28,13 +31,20 @@
         android:name="com.example.craveyard.ui.recipe.favorite.view.FavoriteFragment"
         android:label="fragment_favorite"
 
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favorite_icon_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+        <argument
+            android:name="meal"
+            app:argType="com.example.craveyard.data.model.Meal" />
+    </fragment>
 
     <fragment
         android:id="@+id/aboutUsFragment"
-        android:name="com.example.craveyard.ui.aboutus.AboutUsFragment"
+        android:name="com.example.craveyard.ui.about.AboutUsFragment"
         android:label="fragment_about_us"
-        tools:layout="@layout/fragment_about_us" />
+        tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/recipeDetailFragment"
         android:name="com.example.craveyard.ui.recipe.detail.RecipeDetailFragment"

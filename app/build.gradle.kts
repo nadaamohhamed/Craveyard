@@ -56,7 +56,6 @@ dependencies {
 
 
     //coroutines
-
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
@@ -66,18 +65,11 @@ dependencies {
     //lottie
     implementation (libs.lottie)
 
-
-
     //read more
-
     implementation (libs.readmore.textview)
-
-
 
     //youtube player
     implementation (libs.core)
-
-
 
 
     implementation(libs.androidx.core.ktx)

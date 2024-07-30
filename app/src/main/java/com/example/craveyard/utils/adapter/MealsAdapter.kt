@@ -6,13 +6,16 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
 import com.example.craveyard.data.model.Meal
+import com.example.craveyard.utils.clickhandler.ClickHandler
 
 class MealsAdapter (
-    val mealsList: List<Meal>
+    val mealsList: List<Meal>,
+    val clickHandler: ClickHandler
 ) : RecyclerView.Adapter<MealsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,10 +39,10 @@ class MealsAdapter (
         // TODO:check if favorite: ic_favorite else ic_favorite_border
         holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite)
 
-        holder.itemView.setOnClickListener {
-            // go to recipe details fragment by nav controller
-//            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToRecipeDetailsFragment(meal))
+        holder.meal.setOnClickListener(){
+            clickHandler.onMealClick(meal)
         }
+
     }
 
 
