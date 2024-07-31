@@ -1,6 +1,6 @@
 package com.example.craveyard.authentication.fragments
 
-import com.example.chat.database.User
+import com.example.craveyard.data.db.User
 
 sealed class RegisterViewEvents {
 

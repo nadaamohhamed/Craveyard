@@ -22,6 +22,12 @@ class AuthActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        navController=findNavController(R.id.auth_nav_host)
     }
 
     override fun onSupportNavigateUp(): Boolean {

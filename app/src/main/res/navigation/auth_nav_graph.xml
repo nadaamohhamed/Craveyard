@@ -14,6 +14,8 @@
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.craveyard.ui.auth.login.view.LoginFragment"
@@ -26,9 +28,10 @@
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.craveyard.ui.auth.register.view.RegisterFragment"
+        android:name="com.example.craveyard.authentication.fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
 
@@ -42,8 +45,9 @@
         android:name="com.example.craveyard.ui.recipe.home.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
+
         <argument
             android:name="user"
-            app:argType="com.example.craveyard.db.User" />
+            app:argType="com.example.craveyard.data.db.User" />
     </fragment>
 </navigation>

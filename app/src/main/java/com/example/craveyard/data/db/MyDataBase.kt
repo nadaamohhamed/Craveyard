@@ -1,4 +1,4 @@
-package com.example.chat.database
+package com.example.craveyard.data.db
 
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Firebase
@@ -9,7 +9,7 @@ object MyDataBase {
 
     const val nameOfCollection="users"
 
-    fun saveUserInDB(user: User,onComplete:OnCompleteListener<Void>){
+    fun saveUserInDB(user: User, onComplete:OnCompleteListener<Void>){
         Firebase.firestore
             .collection(nameOfCollection)
             .document(user.uid?:"")

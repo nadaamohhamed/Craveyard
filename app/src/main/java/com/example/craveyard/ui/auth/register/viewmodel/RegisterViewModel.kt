@@ -2,8 +2,8 @@ package com.example.craveyard.ui.auth.register.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.chat.database.MyDataBase
-import com.example.chat.database.User
+import com.example.craveyard.data.db.MyDataBase
+import com.example.craveyard.data.db.User
 import com.example.craveyard.authentication.fragments.RegisterViewEvents
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth

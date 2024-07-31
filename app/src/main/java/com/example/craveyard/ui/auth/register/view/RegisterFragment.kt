@@ -2,37 +2,43 @@
 package com.example.craveyard.authentication.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.chat.database.User
+import com.example.craveyard.data.db.User
 import com.example.craveyard.R
+import com.example.craveyard.databinding.FragmentLoginBinding
 import com.example.craveyard.databinding.FragmentRegisterBinding
-import com.example.craveyard.ui.auth.register.view.RegisterFragmentDirections
+
 import com.example.craveyard.ui.auth.register.viewmodel.RegisterViewModel
 
 class RegisterFragment : Fragment() {
 
 
-    val viewModel: RegisterViewModel
-    lateinit var binding :  FragmentRegisterBinding
+    lateinit var viewModel: RegisterViewModel
+
+    var _binding : FragmentRegisterBinding?=null
+    private val binding : FragmentRegisterBinding get() = _binding!!
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+            _binding=FragmentRegisterBinding.inflate(inflater, container, false)
+        return binding.root
 
     }
-    init {
-        viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
         initView()
         observeLiveData()
     }
