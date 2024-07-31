@@ -22,7 +22,8 @@ class RecipeDetailFragment : Fragment() {
     lateinit var mealName:TextView
     lateinit var mealCategory:TextView
     lateinit var mealArea:TextView
-    lateinit var reciepeText:ReadMoreTextView
+    lateinit var reciepeText:TextView
+    lateinit var readmore:TextView
     lateinit var youTubePlayerView: YouTubePlayerView
 
 
@@ -41,7 +42,8 @@ class RecipeDetailFragment : Fragment() {
         mealName=view.findViewById(R.id.detail_meal_name)
         mealCategory=view.findViewById(R.id.detail_category)
         mealArea=view.findViewById(R.id.detail_meal_area)
-        reciepeText=view.findViewById(R.id.read_more)
+        reciepeText=view.findViewById(R.id.meal_ins)
+        readmore=view.findViewById(R.id.readmore)
         youTubePlayerView=view.findViewById(R.id.youtube_view)
 
         val meal=args.meal
@@ -53,6 +55,17 @@ class RecipeDetailFragment : Fragment() {
         reciepeText.text="Recipe details:\n${meal.strInstructions}"
 
 
+        readmore.setOnClickListener(){
+            if (readmore.text.equals(getString(R.string.read_more))){
+                reciepeText.maxLines=50
+                readmore.text=getString(R.string.show_less)
+            }else{
+                reciepeText.maxLines=4
+                readmore.text=getString(R.string.read_more)
+            }
+
+
+        }
 
         youTubePlayerView.addYouTubePlayerListener(object :AbstractYouTubePlayerListener(){
             override fun onReady(youTubePlayer: YouTubePlayer) {
