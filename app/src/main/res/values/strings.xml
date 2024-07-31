@@ -18,4 +18,6 @@
     <string name="empty_result">No results found.</string>
     <string name="user_image">User Image</string>
     <string name="username">Username</string>
+    <string name="read_more">Read more...</string>
+    <string name="show_less">Show less</string>
 </resources>
