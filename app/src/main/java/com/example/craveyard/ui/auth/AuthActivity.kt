@@ -12,7 +12,7 @@ import com.example.craveyard.R
 class AuthActivity : AppCompatActivity() {
 
 
-    private lateinit var navController: NavController
+    lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
