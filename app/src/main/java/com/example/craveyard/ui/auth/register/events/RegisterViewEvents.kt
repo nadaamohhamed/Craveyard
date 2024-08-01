@@ -1,6 +1,6 @@
 package com.example.craveyard.ui.auth.register.events
 
-import com.example.craveyard.data.db.User
+import com.example.craveyard.data.model.User
 
 sealed class RegisterViewEvents {
 

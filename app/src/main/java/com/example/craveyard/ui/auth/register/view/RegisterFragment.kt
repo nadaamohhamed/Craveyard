@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.craveyard.data.db.User
+import com.example.craveyard.data.model.User
 import com.example.craveyard.databinding.FragmentRegisterBinding
 import com.example.craveyard.ui.auth.register.events.RegisterViewEvents
 import com.example.craveyard.ui.auth.register.viewmodel.RegisterViewModel

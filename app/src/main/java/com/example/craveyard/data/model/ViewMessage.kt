@@ -1,4 +1,4 @@
-package com.mis.route.chatapp
+package com.example.craveyard.data.model
 
 data class ViewMessage(
     val message: String,

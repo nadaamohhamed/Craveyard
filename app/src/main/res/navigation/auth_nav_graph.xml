@@ -47,7 +47,7 @@
         tools:layout="@layout/fragment_home" >
        <argument
            android:name="user"
-           app:argType="com.example.craveyard.data.db.User"
+           app:argType="com.example.craveyard.data.model.User"
            />
     </fragment>
 </navigation>

@@ -4,11 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.craveyard.ui.auth.register.events.RegisterViewEvents
 import com.example.craveyard.data.db.MyDataBase
-import com.example.craveyard.data.db.User
+import com.example.craveyard.data.model.User
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.mis.route.chatapp.ViewMessage
+import com.example.craveyard.data.model.ViewMessage
 
 
 class RegisterViewModel : ViewModel() {
@@ -43,12 +43,12 @@ class RegisterViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     val user = task.result.user
                     creatUserInDB(user!!.uid)
-                    viewMessageLiveData.value=ViewMessage(
+                    viewMessageLiveData.value= ViewMessage(
                         message=task.exception?.localizedMessage?:"Registering is successfully")
 
                 } else {
                     isRegisteringLiveData.value=false
-                    viewMessageLiveData.value=ViewMessage(
+                    viewMessageLiveData.value= ViewMessage(
                         message=task.exception?.localizedMessage?:"Somthing went wrong"
                     )
                 }

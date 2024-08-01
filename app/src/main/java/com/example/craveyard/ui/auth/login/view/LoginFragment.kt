@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
-import com.example.craveyard.data.db.User
+import com.example.craveyard.data.model.User
 import com.example.craveyard.databinding.FragmentLoginBinding
 import com.example.craveyard.ui.auth.login.events.LoginViewEvents
 import com.example.craveyard.ui.auth.login.viewmodel.LoginViewModel

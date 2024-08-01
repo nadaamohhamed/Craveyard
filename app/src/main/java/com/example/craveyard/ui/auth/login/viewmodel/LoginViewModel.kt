@@ -3,11 +3,11 @@ package com.example.craveyard.ui.auth.login.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.craveyard.data.db.MyDataBase
-import com.example.craveyard.data.db.User
+import com.example.craveyard.data.model.User
 import com.example.craveyard.ui.auth.login.events.LoginViewEvents
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.mis.route.chatapp.ViewMessage
+import com.example.craveyard.data.model.ViewMessage
 
 class LoginViewModel : ViewModel(){
     val emailLiveData = MutableLiveData<String?>()
