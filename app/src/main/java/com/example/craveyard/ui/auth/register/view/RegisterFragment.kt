@@ -1,8 +1,7 @@
 
-package com.example.craveyard.authentication.fragments
+package com.example.craveyard.ui.auth.register.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.craveyard.data.db.User
-import com.example.craveyard.R
-import com.example.craveyard.databinding.FragmentLoginBinding
 import com.example.craveyard.databinding.FragmentRegisterBinding
-
+import com.example.craveyard.ui.auth.register.events.RegisterViewEvents
 import com.example.craveyard.ui.auth.register.viewmodel.RegisterViewModel
 
 class RegisterFragment : Fragment() {
@@ -30,7 +27,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-            _binding=FragmentRegisterBinding.inflate(inflater, container, false)
+        _binding=FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -46,7 +43,7 @@ class RegisterFragment : Fragment() {
     private fun observeLiveData() {
         viewModel.events.observe(viewLifecycleOwner){
             when(it){
-                is RegisterViewEvents.navigatToHome->{
+                is RegisterViewEvents.navigatToHome ->{
                     navigatetoHome(it.user)
                 }
             }
@@ -62,6 +59,5 @@ class RegisterFragment : Fragment() {
         binding.vm=viewModel
         binding.lifecycleOwner=this
     }
-
 
 }
