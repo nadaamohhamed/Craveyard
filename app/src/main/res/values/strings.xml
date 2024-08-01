@@ -20,4 +20,9 @@
     <string name="username">Username</string>
     <string name="read_more">Read more...</string>
     <string name="show_less">Show less</string>
+    <string name="password">Password</string>
+    <string name="e_mail_address">E-mail address</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="login">Login</string>
+    <string name="creat_account">Creat account</string>
 </resources>

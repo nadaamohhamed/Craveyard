@@ -12,7 +12,7 @@ import com.example.craveyard.R
 class AuthActivity : AppCompatActivity() {
 
 
-    private lateinit var navController: NavController
+    lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,6 +22,12 @@ class AuthActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        navController=findNavController(R.id.auth_nav_host)
     }
 
     override fun onSupportNavigateUp(): Boolean {

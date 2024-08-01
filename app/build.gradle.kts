@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias (libs.plugins.safeargs)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.google)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -11,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.craveyard"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -35,6 +38,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        dataBinding=true
+        viewBinding=true
+    }
+
 }
 
 dependencies {
@@ -51,7 +59,10 @@ dependencies {
     //room
     implementation(libs.room)
     implementation(libs.room.runtime)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.auth.ktx)
     annotationProcessor(libs.room.compiler)
+    implementation(libs.firebase.common.ktx)
     ksp(libs.room.compiler)
 
 
@@ -80,4 +91,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Firebase
+    implementation(platform(libs.fireBase))
+    implementation(libs.analytics)
+    implementation(libs.auth)
+    implementation(libs.firestore)
+
 }

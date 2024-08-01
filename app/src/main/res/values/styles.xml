@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+    <style name="ShapeAppearance.MyTextInputLayout" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item> <!-- You can adjust this value -->
+    </style>
+
+    <!-- Shape appearance overlay for TextInputLayout -->
+    <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearance">@style/ShapeAppearance.MyTextInputLayout</item>
+    </style>
+</resources>
