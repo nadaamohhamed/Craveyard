@@ -1,7 +1,7 @@
 package com.example.craveyard.ui.recipe.home.repo
 
 import RemoteDataSource
-import com.example.craveyard.data.model.Meals
+import com.example.craveyard.data.model.meals.Meals
 
 
 class HomeRepository (private val remoteDataSource: RemoteDataSource) {

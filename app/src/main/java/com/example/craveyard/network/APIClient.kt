@@ -1,5 +1,5 @@
 
-import com.example.craveyard.data.model.Meals
+import com.example.craveyard.data.model.meals.Meals
 import com.example.craveyard.network.RetrofitHelper
 import kotlin.random.Random
 

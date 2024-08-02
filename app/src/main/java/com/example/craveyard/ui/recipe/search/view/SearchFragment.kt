@@ -13,17 +13,17 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.data.model.Meal
+import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImplementation
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory
-import com.example.craveyard.utils.adapter.SearchAdapter
-import com.example.craveyard.utils.clickhandler.ClickHandler
+import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
+import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 
 class SearchFragment : Fragment() , ClickHandler {
     private lateinit var viewModel: SearchViewModel
-    private lateinit var adapter : SearchAdapter
+    private lateinit var adapter : MealsAdapter
 
     private var  meals :ArrayList<Meal> = ArrayList()
 
@@ -74,7 +74,7 @@ class SearchFragment : Fragment() , ClickHandler {
 
         }
 
-        adapter = SearchAdapter(meals,this)
+        adapter = MealsAdapter(meals,this)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 

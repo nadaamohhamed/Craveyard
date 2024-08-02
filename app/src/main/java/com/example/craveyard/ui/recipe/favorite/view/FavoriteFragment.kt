@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
-import com.example.craveyard.data.model.Meal
-import com.example.craveyard.utils.clickhandler.ClickHandler
+import com.example.craveyard.data.model.meals.Meal
+import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 
 class FavoriteFragment : Fragment(), ClickHandler {

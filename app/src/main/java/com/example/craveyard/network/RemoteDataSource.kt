@@ -1,4 +1,4 @@
-import com.example.craveyard.data.model.Meals
+import com.example.craveyard.data.model.meals.Meals
 
 interface RemoteDataSource {
 

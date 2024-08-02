@@ -1,4 +1,4 @@
-package com.example.craveyard.ui.about
+package com.example.craveyard.ui.about.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.utils.adapter.AboutAdapter
-import com.example.craveyard.data.model.Dev
+import com.example.craveyard.ui.about.adapter.AboutAdapter
+import com.example.craveyard.data.model.about.Dev
 
 
 class AboutUsFragment : Fragment() {

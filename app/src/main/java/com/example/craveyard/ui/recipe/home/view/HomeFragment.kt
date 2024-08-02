@@ -15,15 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
-import com.example.craveyard.data.model.Meal
+import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.home.repo.HomeRepository
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
-import com.example.craveyard.utils.adapter.MealsAdapter
-import com.example.craveyard.utils.clickhandler.ClickHandler
+import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
+import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 
-class HomeFragment : Fragment(), ClickHandler{
+class HomeFragment : Fragment(), ClickHandler {
 
     lateinit var viewModel: HomeViewModel
 
@@ -66,7 +66,7 @@ class HomeFragment : Fragment(), ClickHandler{
         val rv = view.findViewById<RecyclerView>(R.id.rv_meals)
 
         viewModel.recipes.observe(viewLifecycleOwner) {
-            val adapter = MealsAdapter(it, this)
+            val adapter = MealsAdapter(it.toMutableList(), this)
             rv.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             rv.adapter = adapter
         }

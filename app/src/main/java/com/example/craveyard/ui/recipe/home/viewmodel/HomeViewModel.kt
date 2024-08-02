@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.craveyard.ui.recipe.home.repo.HomeRepository
-import com.example.craveyard.data.model.Meal
+import com.example.craveyard.data.model.meals.Meal
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {

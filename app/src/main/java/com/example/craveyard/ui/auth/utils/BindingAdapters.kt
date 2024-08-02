@@ -1,4 +1,4 @@
-package com.example.craveyard.utils
+package com.example.craveyard.ui.auth.utils
 
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputLayout

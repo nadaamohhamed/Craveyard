@@ -4,11 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.craveyard.ui.auth.register.events.RegisterViewEvents
 import com.example.craveyard.data.db.MyDataBase
-import com.example.craveyard.data.model.User
+import com.example.craveyard.data.model.auth.User
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.example.craveyard.data.model.ViewMessage
+import com.example.craveyard.data.model.auth.ViewMessage
 
 
 class RegisterViewModel : ViewModel() {

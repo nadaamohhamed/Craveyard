@@ -3,11 +3,11 @@ package com.example.craveyard.ui.auth.login.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.craveyard.data.db.MyDataBase
-import com.example.craveyard.data.model.User
+import com.example.craveyard.data.model.auth.User
 import com.example.craveyard.ui.auth.login.events.LoginViewEvents
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.example.craveyard.data.model.ViewMessage
+import com.example.craveyard.data.model.auth.ViewMessage
 
 class LoginViewModel : ViewModel(){
     val emailLiveData = MutableLiveData<String?>()
@@ -35,7 +35,6 @@ class LoginViewModel : ViewModel(){
                 isLogin.value=true
                 if (task.isSuccessful) {
                     val user = task.result.user
-                    user!!.uid
                     getUserFromDataBase(user!!.uid)
 
                 } else {
@@ -58,12 +57,11 @@ class LoginViewModel : ViewModel(){
             else{
                 viewMessageLiveData.postValue(
                     ViewMessage(
-                    message = it.exception!!.localizedMessage,posActionName = "Ok")
+                        message = it.exception!!.localizedMessage,posActionName = "Ok")
                 )
             }
         }
     }
-
     fun gotoRegisterClick(){
         events.postValue(LoginViewEvents.navigatToRegister())
     }
@@ -90,6 +88,7 @@ class LoginViewModel : ViewModel(){
         }
         return isvalid
     }
+
 
 
 }

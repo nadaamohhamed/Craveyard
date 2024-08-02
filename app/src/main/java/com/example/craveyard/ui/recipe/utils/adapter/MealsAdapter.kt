@@ -1,4 +1,4 @@
-package com.example.craveyard.utils.adapter
+package com.example.craveyard.ui.recipe.utils.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
-import com.example.craveyard.data.model.Meal
-import com.example.craveyard.utils.clickhandler.ClickHandler
+import com.example.craveyard.data.model.meals.Meal
+import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 class MealsAdapter (
-    val mealsList: List<Meal>,
+    val mealsList: MutableList<Meal>,
     val clickHandler: ClickHandler
 ) : RecyclerView.Adapter<MealsAdapter.ViewHolder>() {
 

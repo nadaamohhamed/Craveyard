@@ -1,6 +1,6 @@
 package com.example.craveyard.data.db
 
-import com.example.craveyard.data.model.User
+import com.example.craveyard.data.model.auth.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
