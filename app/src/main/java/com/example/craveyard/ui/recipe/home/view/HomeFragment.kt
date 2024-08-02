@@ -15,10 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
+import com.example.craveyard.data.model.Category
 import com.example.craveyard.data.model.Meal
 import com.example.craveyard.ui.recipe.home.repo.HomeRepository
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
+import com.example.craveyard.utils.adapter.CategoriesAdapter
 import com.example.craveyard.utils.adapter.MealsAdapter
 import com.example.craveyard.utils.clickhandler.ClickHandler
 
@@ -42,6 +44,7 @@ class HomeFragment : Fragment(), ClickHandler{
         // get data
         viewModel.getAllMeals()
         viewModel.getRandomMeal()
+        viewModel.getCategories()
     }
 
 
@@ -55,6 +58,7 @@ class HomeFragment : Fragment(), ClickHandler{
         // initialize views
         initializeTrendingMealView(view)
         initializeAllMealsView(view)
+        initializeCategoriesView(view)
 
 
         return view
@@ -94,8 +98,24 @@ class HomeFragment : Fragment(), ClickHandler{
         }
     }
 
+    private fun initializeCategoriesView(view: View) {
+        // initialize categories recycler view
+        val rv = view.findViewById<RecyclerView>(R.id.rv_categories)
+
+        viewModel.categories.observe(viewLifecycleOwner) {
+            val adapter = CategoriesAdapter(it, this)
+            rv.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            rv.adapter = adapter
+        }
+    }
+
     override fun onMealClick(meal: Meal) {
         val action = HomeFragmentDirections.actionHomeIconToRecipeDetailFragment(meal)
+        findNavController().navigate(action)
+    }
+
+    override fun onCategoryClick(category: Category) {
+        val action = HomeFragmentDirections.actionHomeIconToCategoryFragment(category)
         findNavController().navigate(action)
     }
 

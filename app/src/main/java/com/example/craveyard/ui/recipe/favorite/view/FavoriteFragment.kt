@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
+import com.example.craveyard.data.model.Category
 import com.example.craveyard.data.model.Meal
 import com.example.craveyard.utils.clickhandler.ClickHandler
 
@@ -41,6 +42,10 @@ class FavoriteFragment : Fragment(), ClickHandler {
     override fun onMealClick(meal: Meal) {
         val action = FavoriteFragmentDirections.actionFavoriteIconToRecipeDetailFragment(meal)
         findNavController().navigate(action)
+    }
+
+    override fun onCategoryClick(category: Category) {
+        TODO("Not yet implemented")
     }
 
 }

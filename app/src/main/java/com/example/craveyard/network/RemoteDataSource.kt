@@ -1,3 +1,4 @@
+import com.example.craveyard.data.model.Categories
 import com.example.craveyard.data.model.Meals
 
 interface RemoteDataSource {
@@ -7,5 +8,9 @@ interface RemoteDataSource {
     suspend fun getAllMeals(): Meals
 
     suspend fun getRandomMeal() : Meals
+
+    suspend fun getCategories() : Categories
+
+    suspend fun getMealsByCategory(category: String) : Meals
 
 }

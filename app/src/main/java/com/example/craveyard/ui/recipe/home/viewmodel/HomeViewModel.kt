@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.craveyard.data.model.Category
 import com.example.craveyard.ui.recipe.home.repo.HomeRepository
 import com.example.craveyard.data.model.Meal
 import kotlinx.coroutines.launch
@@ -12,6 +13,9 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private val _recipes = MutableLiveData<List<Meal>>()
     val recipes: LiveData<List<Meal>> = _recipes
+
+    private val _categories = MutableLiveData<List<Category>>()
+    val categories: LiveData<List<Category>> = _categories
 
     private val _randomMeal = MutableLiveData<List<Meal>>()
     val randomMeal: LiveData<List<Meal>> = _randomMeal
@@ -27,6 +31,13 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
         viewModelScope.launch {
             val response = homeRepository.getRandomMeal()
             _randomMeal.postValue(response.meals)
+        }
+    }
+
+    fun getCategories() {
+        viewModelScope.launch {
+            val response = homeRepository.getCategories()
+            _categories.postValue(response.categories)
         }
     }
 

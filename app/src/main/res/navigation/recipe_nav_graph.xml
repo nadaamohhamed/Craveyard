@@ -16,6 +16,9 @@
         <argument
             android:name="meal"
             app:argType="com.example.craveyard.data.model.Meal" />
+        <action
+            android:id="@+id/action_home_icon_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/search_icon"
@@ -53,5 +56,17 @@
         <argument
             android:name="meal"
             app:argType="com.example.craveyard.data.model.Meal" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.craveyard.ui.recipe.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <argument
+            android:name="Category"
+            app:argType="com.example.craveyard.data.model.Category" />
+        <action
+            android:id="@+id/action_categoryFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
     </fragment>
 </navigation>

@@ -9,4 +9,6 @@ class HomeRepository (private val remoteDataSource: RemoteDataSource) {
 
     suspend fun getRandomMeal(): Meals = remoteDataSource.getRandomMeal()
 
+    suspend fun getCategories() = remoteDataSource.getCategories()
+
 }

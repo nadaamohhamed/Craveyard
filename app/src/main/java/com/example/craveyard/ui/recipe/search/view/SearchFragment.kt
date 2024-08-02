@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
+import com.example.craveyard.data.model.Category
 import com.example.craveyard.data.model.Meal
 import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImplementation
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
@@ -93,6 +94,9 @@ class SearchFragment : Fragment() , ClickHandler {
         findNavController().navigate(action)
     }
 
+    override fun onCategoryClick(category: Category) {
+        TODO("Not yet implemented")
+    }
 
 
 }
