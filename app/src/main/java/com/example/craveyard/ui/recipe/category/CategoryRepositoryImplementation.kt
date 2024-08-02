@@ -8,4 +8,8 @@ class CategoryRepositoryImplementation(private val remoteDataSource: RemoteDataS
     override suspend fun getMealsByCategory(query: String): Meals {
         return remoteDataSource.getMealsByCategory(query)
     }
+
+    override suspend fun searchById(id: String): Meals {
+       return remoteDataSource.searchById(id)
+    }
 }

@@ -1,4 +1,5 @@
 import com.example.craveyard.data.model.Categories
+import com.example.craveyard.data.model.Meal
 import com.example.craveyard.data.model.Meals
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -21,6 +22,9 @@ interface APIService {
     suspend fun getMealsByCategory(
         @Query("c") category: String
     ): Meals
+
+    @GET("api/json/v1/1/lookup.php")
+    suspend fun searchById(@Query("i") id:String):Meals
 
 
 }

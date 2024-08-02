@@ -2,6 +2,7 @@ package com.example.craveyard.ui.recipe.category
 
 import APIClient
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -56,7 +57,15 @@ class CategoryFragment : Fragment(), ClickHandler {
     }
 
     override fun onMealClick(meal: Meal) {
+        Log.d("asd","${meal.strMeal}")
+        Log.d("asd","${meal.strCategory}")
+        Log.d("asd","${meal.idMeal}")
+        Log.d("asd","${meal.strArea}")
+        Log.d("asd","${meal.strYoutube}")
+        Log.d("asd","${meal.strMeal}")
+
         val action = CategoryFragmentDirections.actionCategoryFragmentToRecipeDetailFragment(meal)
+        Log.d("asd","category")
         findNavController().navigate(action)
     }
 

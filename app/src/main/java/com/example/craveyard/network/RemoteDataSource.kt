@@ -1,5 +1,6 @@
 import com.example.craveyard.data.model.Categories
 import com.example.craveyard.data.model.Meals
+import retrofit2.http.Query
 
 interface RemoteDataSource {
 
@@ -12,5 +13,8 @@ interface RemoteDataSource {
     suspend fun getCategories() : Categories
 
     suspend fun getMealsByCategory(category: String) : Meals
+
+
+    suspend fun searchById(id:String):Meals
 
 }

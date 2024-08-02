@@ -16,7 +16,13 @@ class CategoryViewModel(private val categoryRepository: CategoryRepository) : Vi
     fun getMealsByCategory(category: String) {
         viewModelScope.launch {
             val response = categoryRepository.getMealsByCategory(category)
-            _meals.postValue(response.meals)
+            val myMeals=ArrayList<Meal>()
+
+            for (meal in response.meals){
+                val myMeal = categoryRepository.searchById(meal.idMeal).meals[0]
+                myMeals.add(myMeal)
+            }
+            _meals.postValue(myMeals)
         }
     }
 }

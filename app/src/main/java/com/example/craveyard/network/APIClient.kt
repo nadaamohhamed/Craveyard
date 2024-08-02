@@ -2,6 +2,7 @@
 import com.example.craveyard.data.model.Categories
 import com.example.craveyard.data.model.Meals
 import com.example.craveyard.network.RetrofitHelper
+import retrofit2.http.Query
 import kotlin.random.Random
 
 
@@ -26,6 +27,10 @@ object APIClient : RemoteDataSource {
 
     override suspend fun getMealsByCategory(category: String): Meals {
         return RetrofitHelper.retrofitService.getMealsByCategory(category)
+    }
+
+    override suspend fun searchById(id: String): Meals {
+        return RetrofitHelper.retrofitService.searchById(id)
     }
 
 
