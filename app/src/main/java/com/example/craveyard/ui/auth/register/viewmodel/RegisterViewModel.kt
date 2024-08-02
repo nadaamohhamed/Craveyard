@@ -101,7 +101,7 @@ class RegisterViewModel : ViewModel() {
         MyDataBase.saveUserInDB(user){ task->
             if(task.isSuccessful){
                 isRegisteringLiveData.value=false
-                events.postValue(RegisterViewEvents.navigatToHome(user))
+                events.postValue(RegisterViewEvents.navigateToHome(user))
             }
             else{
                 viewMessageLiveData.value= ViewMessage(message=task.exception!!.localizedMessage,

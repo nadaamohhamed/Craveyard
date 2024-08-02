@@ -1,6 +1,8 @@
 package com.example.craveyard.ui.auth.login.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import com.example.craveyard.data.model.auth.User
 import com.example.craveyard.databinding.FragmentLoginBinding
 import com.example.craveyard.ui.auth.login.events.LoginViewEvents
 import com.example.craveyard.ui.auth.login.viewmodel.LoginViewModel
+import com.example.craveyard.ui.recipe.RecipeActivity
 
 
 class LoginFragment : Fragment() {
@@ -25,6 +28,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        Log.d("TAG", "onCreateView: ")
         return binding.root
     }
 
@@ -33,6 +37,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel=ViewModelProvider(this)[LoginViewModel::class.java]
         initViews()
+        Log.d("TAG", "onViewCreated: ")
         observeLiveData()
     }
 
@@ -44,23 +49,32 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeLiveData() {
+        Log.d("TAG", "observeLiveData: ")
         viewModel.events.observe(viewLifecycleOwner) {
+            Log.d("TAG", "observeLiveData: $it")
             when (it) {
                 is LoginViewEvents.navigatToRegister -> {
                     navigateToRegister()
                 }
 
                 is LoginViewEvents.navigateToHome -> {
+                    Log.d("TAG", "observeLiveData: $it")
                     navigateToHome(it.user)
                 }
+
             }
         }
     }
 
     private fun navigateToHome(user: User) {
-        val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment(user)
-        findNavController().navigate(action)
+        val intent = Intent(requireContext(), RecipeActivity::class.java)
+        intent.putExtra("user", user)
+
+        if(intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
+        }
     }
+
     private fun navigateToRegister() {
         findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
     }

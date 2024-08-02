@@ -1,17 +1,18 @@
 
 package com.example.craveyard.ui.auth.register.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.craveyard.data.model.auth.User
 import com.example.craveyard.databinding.FragmentRegisterBinding
 import com.example.craveyard.ui.auth.register.events.RegisterViewEvents
 import com.example.craveyard.ui.auth.register.viewmodel.RegisterViewModel
+import com.example.craveyard.ui.recipe.RecipeActivity
 
 class RegisterFragment : Fragment() {
 
@@ -43,16 +44,20 @@ class RegisterFragment : Fragment() {
     private fun observeLiveData() {
         viewModel.events.observe(viewLifecycleOwner){
             when(it){
-                is RegisterViewEvents.navigatToHome ->{
-                    navigatetoHome(it.user)
+                is RegisterViewEvents.navigateToHome ->{
+                    navigateToHome(it.user)
                 }
             }
         }
     }
 
-    private fun navigatetoHome(user: User) {
-        val action = RegisterFragmentDirections.actionRegisterFragmentToHomeFragment(user)
-        findNavController().navigate(action)
+    private fun navigateToHome(user: User) {
+        val intent = Intent(requireContext(), RecipeActivity::class.java)
+        intent.putExtra("user", user)
+
+        if(intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
+        }
     }
 
     private fun initView() {

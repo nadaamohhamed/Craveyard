@@ -9,3 +9,4 @@ plugins {
     alias(libs.plugins.kotlin.parcelize) apply false
 
 }
+

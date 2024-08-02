@@ -1,6 +1,8 @@
 package com.example.craveyard.ui.recipe
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -14,13 +16,17 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.example.craveyard.R
+import com.example.craveyard.data.model.auth.User
+import com.example.craveyard.ui.auth.AuthActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class RecipeActivity : AppCompatActivity(){
 
     private lateinit var bottomNavigationView : BottomNavigationView
     private lateinit var navController : NavController
     private lateinit var  toolbar:Toolbar
+    private lateinit var user : User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +42,10 @@ class RecipeActivity : AppCompatActivity(){
          toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "CraveYard"
+
+        user = intent.getSerializableExtra("user") as User
+
+        Log.d("TAG", "onCreate: ${user.email}")
     }
 
     override fun onStart() {
@@ -53,7 +63,8 @@ class RecipeActivity : AppCompatActivity(){
                 bottomNavigationView.visibility = View.GONE
                 toolbar.visibility=View.GONE
 
-            } else {
+            }
+            else {
 
                 bottomNavigationView.visibility = View.VISIBLE
                 toolbar.visibility=View.VISIBLE
@@ -70,9 +81,19 @@ class RecipeActivity : AppCompatActivity(){
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.action_logout){
+            FirebaseAuth.getInstance().signOut()
+
+            // TODO: should be modified to make the splash fragment doesn't show again
+            val intent = Intent(this, AuthActivity::class.java)
+            if(intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+                return true
+            }
+
+        }
+
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
-
-
 
 }

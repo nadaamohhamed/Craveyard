@@ -1,5 +1,6 @@
 package com.example.craveyard.ui.auth.login.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.craveyard.data.db.MyDataBase
@@ -34,6 +35,7 @@ class LoginViewModel : ViewModel(){
             .addOnCompleteListener { task ->
                 isLogin.value=true
                 if (task.isSuccessful) {
+                    Log.d("TAG", "signInWithEmail:success")
                     val user = task.result.user
                     getUserFromDataBase(user!!.uid)
 
@@ -48,13 +50,17 @@ class LoginViewModel : ViewModel(){
     }
 
     private fun getUserFromDataBase(uid:String) {
+        Log.d("TAG", "getUserFromDataBase: $uid")
         MyDataBase.getUserFromDB(uid){
             if(it.isSuccessful){
+                Log.d("TAG", "getUserFromDataBaseSuccess: $it")
                 isLogin.value=false
                 val user = it.result.toObject(User::class.java)
+                Log.d("TAG", "getUserFromDataBase: $user")
                 events.postValue(LoginViewEvents.navigateToHome(user!!))
             }
             else{
+                Log.e("TAG", "Database fetch failed: ${it.exception?.localizedMessage}")
                 viewMessageLiveData.postValue(
                     ViewMessage(
                         message = it.exception!!.localizedMessage,posActionName = "Ok")

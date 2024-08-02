@@ -1,5 +1,6 @@
 package com.example.craveyard.data.db
 
+import android.util.Log
 import com.example.craveyard.data.model.auth.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Firebase
@@ -18,6 +19,7 @@ object MyDataBase {
     }
 
     fun getUserFromDB(uid:String,onComplete:OnCompleteListener<DocumentSnapshot>){
+        Log.d("TAG", "getUserFromDB: $uid")
         Firebase.firestore
             .collection(nameOfCollection)
             .document(uid)
