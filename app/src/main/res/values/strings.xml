@@ -22,8 +22,10 @@
     <string name="show_less">Show less</string>
     <string name="password">Password</string>
     <string name="e_mail_address">E-mail address</string>
-    <string name="welcome_back">Welcome Back</string>
+    <string name="welcome_back">Welcome Back, we missed you!</string>
     <string name="login">Login</string>
     <string name="create_account">Create account</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="register">Register</string>
+    <string name="password_confirmation">Password Confirmation</string>
 </resources>

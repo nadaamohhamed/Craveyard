@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_red">#E23E3E</color>
     <color name="light_blue">#FF1F5ED6</color>
+    <color name="light_grey">#BDBDBD</color>
 </resources>

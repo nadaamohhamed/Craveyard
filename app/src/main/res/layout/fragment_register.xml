@@ -14,24 +14,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="16dp"
-        tools:context=".ui.auth.register.RegisterFragment"
-        android:background="@drawable/background_image">
+        tools:context=".ui.auth.register.RegisterFragment">
 
         <TextView
             android:id="@+id/register_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingTop="20dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="120dp"
+            android:text="@string/register"
+            android:textColor="@color/light_red"
             android:textSize="30sp"
-            android:paddingBottom="250dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/white"
-
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -41,11 +38,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/white"
             app:boxBackgroundMode="outline"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
-            android:hint="User Name"
-            android:textColorHint="@color/black"
+            android:hint="@string/username"
             app:error="@{vm.userNameError}"
             app:layout_constraintTop_toBottomOf="@id/register_tv">
 
@@ -61,11 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/white"
             app:boxBackgroundMode="outline"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
             android:layout_marginTop="8dp"
-            android:hint="E-mail Address"
+            android:hint="@string/e_mail_address"
             app:error="@{vm.emailError}"
             app:layout_constraintTop_toBottomOf="@id/text_input_fisrtname">
 
@@ -80,10 +74,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Password"
+            android:hint="@string/password"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/white"
             app:boxBackgroundMode="outline"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
             app:error="@{vm.passwordError}"
@@ -100,11 +93,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Password Confirmation"
+            android:hint="@string/password_confirmation"
             app:error="@{vm.passwordConfirmationError}"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/white"
             app:boxBackgroundMode="outline"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
             app:layout_constraintTop_toBottomOf="@id/text_input_password">
@@ -117,28 +109,32 @@
 
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/register_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="48dp"
             android:layout_marginEnd="10dp"
-            app:cardCornerRadius="20dp"
             android:onClick="@{()->vm.register()}"
-            app:cardBackgroundColor="@{vm.isRegisteringLiveData==true ? @color/white : @color/light_blue}"
-            app:layout_constraintTop_toBottomOf="@id/text_input_password_confirmation"
-            tools:layout_editor_absoluteX="16dp">
+            app:cardBackgroundColor="@{vm.isRegisteringLiveData==true ? @color/white : @color/light_red}"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_input_password_confirmation">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="10dp"
-                android:text="Create account"
+                android:text="@string/register"
                 android:textColor="@{vm.isRegisteringLiveData == true ? @color/black : @color/white}"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlSymmetry" />
 
             <ImageView
                 android:layout_width="48dp"
@@ -148,7 +144,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#BDBDBD" />
+                app:tint="@color/white" />
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/register_btn_progress"
