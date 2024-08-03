@@ -2,7 +2,6 @@ package com.example.craveyard.ui.auth.login.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,6 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        Log.d("TAG", "onCreateView: ")
         return binding.root
     }
 
@@ -36,7 +34,6 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel=ViewModelProvider(this)[LoginViewModel::class.java]
         initViews()
-        Log.d("TAG", "onViewCreated: ")
         observeLiveData()
     }
 
@@ -48,16 +45,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeLiveData() {
-        Log.d("TAG", "observeLiveData: ")
         viewModel.events.observe(viewLifecycleOwner) {
-            Log.d("TAG", "observeLiveData: $it")
             when (it) {
                 is LoginViewEvents.navigateToRegister -> {
                     navigateToRegister()
                 }
 
                 is LoginViewEvents.navigateToHome -> {
-                    Log.d("TAG", "observeLiveData: $it")
                     navigateToHome()
                 }
 

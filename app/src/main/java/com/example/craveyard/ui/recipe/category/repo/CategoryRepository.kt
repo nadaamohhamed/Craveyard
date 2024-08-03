@@ -1,4 +1,4 @@
-package com.example.craveyard.ui.recipe.category
+package com.example.craveyard.ui.recipe.category.repo
 
 import com.example.craveyard.data.model.meals.Meals
 

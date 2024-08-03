@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.example.craveyard.ui.recipe.category.CategoryFragment"
+        android:name="com.example.craveyard.ui.recipe.category.view.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" >
         <argument

@@ -19,11 +19,11 @@
             android:id="@+id/login_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="40dp"
-            android:paddingBottom="150dp"
+            android:paddingTop="70dp"
+            android:paddingBottom="90dp"
             android:text="@string/login"
             android:textColor="@color/light_red"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +33,7 @@
             android:id="@+id/tv_welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:paddingBottom="30dp"
             android:text="@string/welcome_back"
             android:textColor="@color/black"
@@ -43,36 +44,48 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:hint="@string/e_mail_address"
-            app:error="@{vm.emailError}"
             app:boxBackgroundMode="outline"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
-            app:layout_constraintTop_toBottomOf="@id/tv_welcome">
+            app:boxStrokeColor="@color/light_red"
+            app:endIconTint="@color/light_red"
+            app:error="@{vm.emailError}"
+            app:hintTextColor="@color/light_red"
+            app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+            app:startIconTint="@color/light_red"
+            tools:layout_editor_absoluteX="16dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm.emailLiveData}"/>
+                android:text="@={vm.emailLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:error="@{vm.passwordError}"
-            app:boxBackgroundMode="outline"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
+            android:layout_marginTop="20dp"
             android:hint="@string/password"
-            app:layout_constraintTop_toBottomOf="@id/text_input_email">
+            android:inputType="textPassword"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/light_red"
+            app:endIconTint="@color/light_red"
+            app:error="@{vm.passwordError}"
+            app:hintTextColor="@color/light_red"
+            app:layout_constraintTop_toBottomOf="@id/text_input_email"
+            app:passwordToggleEnabled="true"
+            app:startIconTint="@color/light_red"
+            tools:layout_editor_absoluteX="16dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm.passwordLiveData}"/>
+                android:text="@={vm.passwordLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -89,9 +102,9 @@
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="50dp"
             android:onClick="@{()->vm.login()}"
-            app:cardBackgroundColor="@color/light_red"
+            app:cardBackgroundColor="@{vm.isLogin()==true ? @color/white : @color/light_red}"
             app:cardCornerRadius="20dp"
             app:layout_constraintTop_toBottomOf="@id/text_input_password"
             tools:layout_editor_absoluteX="16dp">
@@ -102,8 +115,9 @@
                 android:layout_gravity="center_vertical"
                 android:paddingStart="10dp"
                 android:text="@string/login"
-                android:textColor="@color/white"
+                android:textColor="@{vm.isLogin() == true ? @color/black : @color/white}"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -124,7 +138,8 @@
                 android:layout_height="48dp"
                 android:layout_gravity="end|center_vertical"
                 android:indeterminate="true"
-                android:visibility="@{vm.isLogin == false ? View.GONE : View.VISIBLE}"
+                android:visibility="@{vm.isLogin() == false ? View.GONE : View.VISIBLE}"
+                app:indicatorColor="@color/light_red"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -150,6 +165,7 @@
                 android:paddingStart="10dp"
                 android:text="@string/create_account"
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
