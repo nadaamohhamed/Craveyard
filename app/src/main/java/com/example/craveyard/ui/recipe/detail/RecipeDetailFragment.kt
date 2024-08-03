@@ -13,7 +13,6 @@ import com.example.craveyard.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import kr.co.prnd.readmore.ReadMoreTextView
 
 class RecipeDetailFragment : Fragment() {
 

@@ -2,7 +2,6 @@ package com.example.craveyard.ui.recipe.favorite.viewmodel
 
 import androidx.lifecycle.ViewModelProvider
 import com.example.craveyard.ui.recipe.favorite.repo.FavoriteRepository
-import com.example.craveyard.ui.recipe.home.repo.HomeRepository
 
 class FavoriteViewModelFactory (private val favoriteRepository: FavoriteRepository) : ViewModelProvider.Factory  {
 

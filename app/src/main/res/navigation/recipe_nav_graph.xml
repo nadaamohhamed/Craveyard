@@ -15,7 +15,7 @@
             app:destination="@id/recipeDetailFragment" />
         <argument
             android:name="meal"
-            app:argType="com.example.craveyard.data.model.Meal" />
+            app:argType="com.example.craveyard.data.model.meals.Meal" />
         <action
             android:id="@+id/action_home_icon_to_categoryFragment"
             app:destination="@id/categoryFragment" />

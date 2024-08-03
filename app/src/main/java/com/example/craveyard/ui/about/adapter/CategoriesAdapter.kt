@@ -1,4 +1,4 @@
-package com.example.craveyard.utils.adapter
+package com.example.craveyard.ui.about.adapter
 
 import android.view.LayoutInflater
 import android.view.View

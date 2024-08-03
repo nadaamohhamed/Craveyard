@@ -9,8 +9,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.example.craveyard.data.model.auth.ViewMessage
-import com.example.craveyard.data.model.meals.Meal
-import com.google.firebase.firestore.firestore
 
 
 class RegisterViewModel : ViewModel() {

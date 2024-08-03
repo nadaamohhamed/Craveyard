@@ -2,8 +2,6 @@ package com.example.craveyard.ui.splash
 
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View

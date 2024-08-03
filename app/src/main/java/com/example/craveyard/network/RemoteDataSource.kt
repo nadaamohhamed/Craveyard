@@ -1,6 +1,5 @@
 import com.example.craveyard.data.model.meals.Meals
 import com.example.craveyard.data.model.Categories
-import retrofit2.http.Query
 
 interface RemoteDataSource {
 
