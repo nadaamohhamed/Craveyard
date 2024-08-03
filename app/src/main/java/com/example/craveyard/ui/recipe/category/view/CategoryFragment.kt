@@ -1,4 +1,4 @@
-package com.example.craveyard.ui.recipe.category
+package com.example.craveyard.ui.recipe.category.view
 
 import APIClient
 import android.os.Bundle
@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.data.model.Category
 import com.example.craveyard.data.model.meals.Meal
+import com.example.craveyard.ui.recipe.category.repo.CategoryRepositoryImpl
+import com.example.craveyard.ui.recipe.category.viewmodel.CategoryViewModel
+import com.example.craveyard.ui.recipe.category.viewmodel.CategoryViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
@@ -50,7 +53,7 @@ class CategoryFragment : Fragment(), ClickHandler {
         return view
     }
     private fun getViewModel() {
-        val categoryViewModelFactory = CategoryViewModelFactory(categoryRepository = CategoryRepositoryImplementation(remoteDataSource = APIClient))
+        val categoryViewModelFactory = CategoryViewModelFactory(categoryRepository = CategoryRepositoryImpl(remoteDataSource = APIClient))
         viewModel = ViewModelProvider(this, categoryViewModelFactory).get(CategoryViewModel::class.java)
     }
 

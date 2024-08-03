@@ -18,7 +18,7 @@ import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
-import com.example.craveyard.ui.about.adapter.CategoriesAdapter
+import com.example.craveyard.ui.recipe.category.adapter.CategoriesAdapter
 
 
 class HomeFragment : Fragment(), ClickHandler {
