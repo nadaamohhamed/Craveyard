@@ -9,6 +9,8 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.example.craveyard.data.model.auth.ViewMessage
+import com.example.craveyard.data.model.meals.Meal
+import com.google.firebase.firestore.firestore
 
 
 class RegisterViewModel : ViewModel() {
@@ -42,14 +44,14 @@ class RegisterViewModel : ViewModel() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user = task.result.user
-                    creatUserInDB(user!!.uid)
+                    createUserInDB(user!!.uid)
                     viewMessageLiveData.value= ViewMessage(
                         message=task.exception?.localizedMessage?:"Registering is successfully")
 
                 } else {
                     isRegisteringLiveData.value=false
                     viewMessageLiveData.value= ViewMessage(
-                        message=task.exception?.localizedMessage?:"Somthing went wrong"
+                        message=task.exception?.localizedMessage?:"Something went wrong"
                     )
                 }
 
@@ -95,9 +97,9 @@ class RegisterViewModel : ViewModel() {
         return isvalid
     }
 
-    private fun creatUserInDB(uid:String){
+    private fun createUserInDB(uid:String){
 
-        val user= User(uid,userNameLiveData.value!!,emailLiveData.value!!)
+        val user= User(uid,userNameLiveData.value!!,emailLiveData.value!!, mutableListOf())
         MyDataBase.saveUserInDB(user){ task->
             if(task.isSuccessful){
                 isRegisteringLiveData.value=false

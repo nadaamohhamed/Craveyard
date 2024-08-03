@@ -69,7 +69,7 @@ class LoginViewModel : ViewModel(){
         }
     }
     fun gotoRegisterClick(){
-        events.postValue(LoginViewEvents.navigatToRegister())
+        events.postValue(LoginViewEvents.navigateToRegister())
     }
 
     fun isValidInputs():Boolean{

@@ -6,5 +6,5 @@ sealed class LoginViewEvents {
 
     data class navigateToHome(val user: User):LoginViewEvents()
 
-    class navigatToRegister:LoginViewEvents()
+    class navigateToRegister:LoginViewEvents()
 }

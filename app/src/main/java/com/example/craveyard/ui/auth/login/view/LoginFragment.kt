@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
-import com.example.craveyard.data.model.auth.User
 import com.example.craveyard.databinding.FragmentLoginBinding
 import com.example.craveyard.ui.auth.login.events.LoginViewEvents
+import com.example.craveyard.ui.auth.login.repo.UserRepository
 import com.example.craveyard.ui.auth.login.viewmodel.LoginViewModel
 import com.example.craveyard.ui.recipe.RecipeActivity
 
@@ -53,22 +53,22 @@ class LoginFragment : Fragment() {
         viewModel.events.observe(viewLifecycleOwner) {
             Log.d("TAG", "observeLiveData: $it")
             when (it) {
-                is LoginViewEvents.navigatToRegister -> {
+                is LoginViewEvents.navigateToRegister -> {
                     navigateToRegister()
                 }
 
                 is LoginViewEvents.navigateToHome -> {
                     Log.d("TAG", "observeLiveData: $it")
-                    navigateToHome(it.user)
+                    UserRepository.setUser(it.user)
+                    navigateToHome()
                 }
 
             }
         }
     }
 
-    private fun navigateToHome(user: User) {
+    private fun navigateToHome() {
         val intent = Intent(requireContext(), RecipeActivity::class.java)
-        intent.putExtra("user", user)
 
         if(intent.resolveActivity(requireActivity().packageManager) != null) {
             startActivity(intent)

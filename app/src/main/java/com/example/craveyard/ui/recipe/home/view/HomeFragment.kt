@@ -1,22 +1,22 @@
 package com.example.craveyard.ui.recipe.home.view
 
 import APIClient
+import com.example.craveyard.ui.auth.login.repo.UserRepository
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.craveyard.R
 import com.example.craveyard.data.model.meals.Meal
-import com.example.craveyard.ui.recipe.home.repo.HomeRepository
+import com.example.craveyard.ui.recipe.favorite.repo.FavoriteRepositoryImpl
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModel
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModelFactory
+import com.example.craveyard.ui.recipe.home.repo.HomeRepositoryImpl
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
@@ -25,14 +25,19 @@ import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 class HomeFragment : Fragment(), ClickHandler {
 
-    lateinit var viewModel: HomeViewModel
+    lateinit var homeViewModel: HomeViewModel
+    lateinit var favoriteViewModel: FavoriteViewModel
 
     private fun initializeViewModel() {
 
-        val homeViewModelFactory = HomeViewModelFactory(homeRepository = HomeRepository(remoteDataSource = APIClient))
-        viewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
+        val homeViewModelFactory = HomeViewModelFactory(homeRepository = HomeRepositoryImpl(remoteDataSource = APIClient))
+        homeViewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
+
+        val favoriteViewModelFactory = FavoriteViewModelFactory(favoriteRepository = FavoriteRepositoryImpl(userRepository = UserRepository))
+        favoriteViewModel = ViewModelProvider(this, favoriteViewModelFactory).get(FavoriteViewModel::class.java)
 
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +45,8 @@ class HomeFragment : Fragment(), ClickHandler {
         initializeViewModel()
 
         // get data
-        viewModel.getAllMeals()
-        viewModel.getRandomMeal()
+        homeViewModel.getAllMeals()
+        homeViewModel.getRandomMeal()
     }
 
 
@@ -56,7 +61,6 @@ class HomeFragment : Fragment(), ClickHandler {
         initializeTrendingMealView(view)
         initializeAllMealsView(view)
 
-
         return view
     }
 
@@ -65,32 +69,21 @@ class HomeFragment : Fragment(), ClickHandler {
         // initialize meals recycler view
         val rv = view.findViewById<RecyclerView>(R.id.rv_meals)
 
-        viewModel.recipes.observe(viewLifecycleOwner) {
-            val adapter = MealsAdapter(it.toMutableList(), this)
+        homeViewModel.recipes.observe(viewLifecycleOwner) {
+            val adapter = MealsAdapter(it.toMutableList(), this, favoriteViewModel)
             rv.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             rv.adapter = adapter
         }
     }
 
     private fun initializeTrendingMealView(view: View) {
-        // initialize trending random meal card
-        val trendingMeal = view.findViewById<CardView>(R.id.trending_meal)
+        // initialize trending random meal
+        val trendingMeal = view.findViewById<RecyclerView>(R.id.trending_meal)
 
-        viewModel.randomMeal.observe(viewLifecycleOwner) {
-            // initialize trending meal card
-            val meal = it[0]
-            trendingMeal.findViewById<TextView>(R.id.recipe_name).text = meal.strMeal
-            val mealImg = trendingMeal.findViewById<ImageView>(R.id.recipe_image)
-
-            // load image
-            Glide.with(mealImg)
-                .load(meal.strMealThumb)
-                .into(mealImg)
-            // set on click listener
-            trendingMeal.setOnClickListener {
-                // go to recipe details fragment by nav controller
-                findNavController().navigate(HomeFragmentDirections.actionHomeIconToRecipeDetailFragment(meal))
-            }
+        homeViewModel.randomMeal.observe(viewLifecycleOwner) {
+            val adapter = MealsAdapter(it.toMutableList(), this, favoriteViewModel)
+            trendingMeal.layoutManager = LinearLayoutManager(context)
+            trendingMeal.adapter = adapter
         }
     }
 

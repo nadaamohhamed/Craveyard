@@ -1,12 +1,10 @@
 package com.example.craveyard.ui.recipe.home.repo
 
-import RemoteDataSource
 import com.example.craveyard.data.model.meals.Meals
 
+interface HomeRepository {
 
-class HomeRepository (private val remoteDataSource: RemoteDataSource) {
-    suspend fun getAllMeals(): Meals = remoteDataSource.getAllMeals()
+    suspend fun getAllMeals() : Meals
 
-    suspend fun getRandomMeal(): Meals = remoteDataSource.getRandomMeal()
-
+    suspend fun getRandomMeal() : Meals
 }

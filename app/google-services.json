@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "636996567816",
-    "project_id": "craveyard2-40263",
-    "storage_bucket": "craveyard2-40263.appspot.com"
+    "project_number": "575437735968",
+    "project_id": "craveyard-e7b02",
+    "storage_bucket": "craveyard-e7b02.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:636996567816:android:6da54bb2222f2dc880a2bd",
+        "mobilesdk_app_id": "1:575437735968:android:c6871cf4a90c94c5821445",
         "android_client_info": {
           "package_name": "com.example.craveyard"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD-7K9A49BLbV_y9FBHhO30B3-hQfZOwKQ"
+          "current_key": "AIzaSyBUDOUqJo93aCiSZzLeWn17H5SA0R-GZeM"
         }
       ],
       "services": {

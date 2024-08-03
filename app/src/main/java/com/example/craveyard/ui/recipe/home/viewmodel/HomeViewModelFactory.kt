@@ -3,6 +3,7 @@ package com.example.craveyard.ui.recipe.home.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.craveyard.ui.recipe.home.repo.HomeRepository
+import com.example.craveyard.ui.recipe.home.repo.HomeRepositoryImpl
 
 class HomeViewModelFactory(private val homeRepository: HomeRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

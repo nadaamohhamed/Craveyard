@@ -26,7 +26,6 @@ class RecipeActivity : AppCompatActivity(){
     private lateinit var bottomNavigationView : BottomNavigationView
     private lateinit var navController : NavController
     private lateinit var  toolbar:Toolbar
-    private lateinit var user : User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +42,7 @@ class RecipeActivity : AppCompatActivity(){
         setSupportActionBar(toolbar)
         supportActionBar?.title = "CraveYard"
 
-        user = intent.getSerializableExtra("user") as User
 
-        Log.d("TAG", "onCreate: ${user.email}")
     }
 
     override fun onStart() {
@@ -65,7 +62,6 @@ class RecipeActivity : AppCompatActivity(){
 
             }
             else {
-
                 bottomNavigationView.visibility = View.VISIBLE
                 toolbar.visibility=View.VISIBLE
             }
