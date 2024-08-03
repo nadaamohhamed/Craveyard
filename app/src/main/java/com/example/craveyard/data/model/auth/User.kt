@@ -9,4 +9,4 @@ data class User(
     val userName:String?=null,
     val email:String?=null,
     var favorites:MutableList<Meal>?=null,
-    ):Serializable
+):Serializable
