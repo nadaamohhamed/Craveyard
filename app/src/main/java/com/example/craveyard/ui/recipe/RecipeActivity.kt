@@ -80,6 +80,10 @@ class RecipeActivity : AppCompatActivity(){
 
             // TODO: should be modified to make the splash fragment doesn't show again
             val intent = Intent(this, AuthActivity::class.java)
+
+            // finish current activity
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+
             if(intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
                 return true
