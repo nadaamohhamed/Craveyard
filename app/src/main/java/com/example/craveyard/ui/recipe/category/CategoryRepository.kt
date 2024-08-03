@@ -1,7 +1,6 @@
 package com.example.craveyard.ui.recipe.category
 
-import com.example.craveyard.data.model.Meals
-import retrofit2.http.Query
+import com.example.craveyard.data.model.meals.Meals
 
 interface CategoryRepository {
 

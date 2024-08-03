@@ -3,6 +3,7 @@ package com.example.craveyard.ui.recipe.favorite.view
 
 import com.example.craveyard.ui.auth.login.repo.UserRepository
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
+import com.example.craveyard.data.model.Category
 import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.favorite.repo.FavoriteRepositoryImpl
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModel
@@ -87,7 +89,7 @@ class FavoriteFragment : Fragment(), ClickHandler {
     }
 
     override fun onCategoryClick(category: Category) {
-        TODO("Not yet implemented")
+        Log.d("asd","${category.strCategory}")
     }
 
 }

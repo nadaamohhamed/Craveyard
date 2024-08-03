@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.data.model.Category
-import com.example.craveyard.data.model.Meal
-import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImplementation
-import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
-import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory
-import com.example.craveyard.utils.adapter.MealsAdapter
-import com.example.craveyard.utils.clickhandler.ClickHandler
+import com.example.craveyard.data.model.meals.Meal
+import com.example.craveyard.ui.auth.login.repo.UserRepository
+import com.example.craveyard.ui.recipe.favorite.repo.FavoriteRepositoryImpl
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModel
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModelFactory
+import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
+import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
+
 
 class CategoryFragment : Fragment(), ClickHandler {
 
@@ -41,7 +43,10 @@ class CategoryFragment : Fragment(), ClickHandler {
         viewModel.getMealsByCategory(category.strCategory)
         viewModel.meals.observe(viewLifecycleOwner){
             if (it!=null){
-                adapter = MealsAdapter(mealsList = it, clickHandler = this)
+                val favoriteViewModelFactory = FavoriteViewModelFactory(favoriteRepository = FavoriteRepositoryImpl(userRepository = UserRepository))
+                val favoriteViewModel = ViewModelProvider(this, favoriteViewModelFactory).get(
+                    FavoriteViewModel::class.java)
+                adapter = MealsAdapter(mealsList = it, clickHandler = this,favoriteViewModel )
                 recyclerView.layoutManager = LinearLayoutManager(context)
                 recyclerView.adapter = adapter
             }

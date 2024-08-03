@@ -4,14 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.craveyard.data.model.Meal
-import com.example.craveyard.data.model.Meals
+import com.example.craveyard.data.model.meals.Meal
 import kotlinx.coroutines.launch
 
 class CategoryViewModel(private val categoryRepository: CategoryRepository) : ViewModel() {
 
-    private val _meals = MutableLiveData<List<Meal>>()
-    val meals: LiveData<List<Meal>> get() = _meals
+    private val _meals = MutableLiveData<MutableList<Meal>>()
+    val meals: LiveData<MutableList<Meal>> get() = _meals
 
     fun getMealsByCategory(category: String) {
         viewModelScope.launch {

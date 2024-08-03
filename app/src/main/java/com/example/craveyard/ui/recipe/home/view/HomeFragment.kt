@@ -18,13 +18,12 @@ import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModel
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModelFactory
 import com.example.craveyard.ui.recipe.home.repo.HomeRepositoryImpl
 import com.example.craveyard.data.model.Category
-import com.example.craveyard.data.model.Meal
 import com.example.craveyard.ui.recipe.home.repo.HomeRepository
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
+import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
+import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 import com.example.craveyard.utils.adapter.CategoriesAdapter
-import com.example.craveyard.utils.adapter.MealsAdapter
-import com.example.craveyard.utils.clickhandler.ClickHandler
 
 
 class HomeFragment : Fragment(), ClickHandler {
@@ -71,6 +70,16 @@ class HomeFragment : Fragment(), ClickHandler {
         return view
     }
 
+    private fun initializeCategoriesView(view: View) {
+        // initialize categories recycler view
+        val rv = view.findViewById<RecyclerView>(R.id.rv_categories)
+
+        homeViewModel.categories.observe(viewLifecycleOwner) {
+            val adapter = CategoriesAdapter(it, this)
+            rv.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            rv.adapter = adapter
+        }
+    }
 
     private fun initializeAllMealsView(view: View) {
         // initialize meals recycler view

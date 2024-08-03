@@ -1,7 +1,7 @@
 package com.example.craveyard.ui.recipe.category
 
 import RemoteDataSource
-import com.example.craveyard.data.model.Meals
+import com.example.craveyard.data.model.meals.Meals
 
 class CategoryRepositoryImplementation(private val remoteDataSource: RemoteDataSource) :
     CategoryRepository {

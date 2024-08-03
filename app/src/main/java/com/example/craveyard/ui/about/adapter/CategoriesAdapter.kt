@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
 import com.example.craveyard.data.model.Category
-import com.example.craveyard.utils.clickhandler.ClickHandler
+import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 class CategoriesAdapter(val data: List<Category>, var clickHandler: ClickHandler) : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 

@@ -20,8 +20,6 @@ import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModel
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModelFactory
 import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImpl
 import com.example.craveyard.data.model.Category
-import com.example.craveyard.data.model.Meal
-import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImplementation
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
