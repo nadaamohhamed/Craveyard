@@ -97,7 +97,7 @@ class RegisterViewModel : ViewModel() {
 
     private fun createUserInDB(uid:String){
 
-        val user= User(uid,userNameLiveData.value!!,emailLiveData.value!!, mutableListOf())
+        val user= User(uid,userNameLiveData.value!!,emailLiveData.value!!)
         MyDataBase.saveUserInDB(user){ task->
             if(task.isSuccessful){
                 isRegisteringLiveData.value=false

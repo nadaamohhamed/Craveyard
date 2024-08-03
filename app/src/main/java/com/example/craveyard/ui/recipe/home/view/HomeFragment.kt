@@ -1,7 +1,6 @@
 package com.example.craveyard.ui.recipe.home.view
 
 import APIClient
-import com.example.craveyard.ui.auth.login.repo.UserRepository
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.data.model.meals.Meal
-import com.example.craveyard.ui.recipe.favorite.repo.FavoriteRepositoryImpl
-import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModel
-import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModelFactory
 import com.example.craveyard.ui.recipe.home.repo.HomeRepositoryImpl
 import com.example.craveyard.data.model.Category
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
@@ -28,15 +24,11 @@ import com.example.craveyard.ui.about.adapter.CategoriesAdapter
 class HomeFragment : Fragment(), ClickHandler {
 
     lateinit var homeViewModel: HomeViewModel
-    lateinit var favoriteViewModel: FavoriteViewModel
 
     private fun initializeViewModel() {
 
         val homeViewModelFactory = HomeViewModelFactory(homeRepository = HomeRepositoryImpl(remoteDataSource = APIClient))
         homeViewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
-
-        val favoriteViewModelFactory = FavoriteViewModelFactory(favoriteRepository = FavoriteRepositoryImpl(userRepository = UserRepository))
-        favoriteViewModel = ViewModelProvider(this, favoriteViewModelFactory).get(FavoriteViewModel::class.java)
 
     }
 
@@ -85,7 +77,7 @@ class HomeFragment : Fragment(), ClickHandler {
         val rv = view.findViewById<RecyclerView>(R.id.rv_meals)
 
         homeViewModel.recipes.observe(viewLifecycleOwner) {
-            val adapter = MealsAdapter(it.toMutableList(), this, favoriteViewModel)
+            val adapter = MealsAdapter(it.toMutableList(), this)
             rv.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             rv.adapter = adapter
         }
@@ -96,7 +88,7 @@ class HomeFragment : Fragment(), ClickHandler {
         val trendingMeal = view.findViewById<RecyclerView>(R.id.trending_meal)
 
         homeViewModel.randomMeal.observe(viewLifecycleOwner) {
-            val adapter = MealsAdapter(it.toMutableList(), this, favoriteViewModel)
+            val adapter = MealsAdapter(it.toMutableList(), this)
             trendingMeal.layoutManager = LinearLayoutManager(context)
             trendingMeal.adapter = adapter
         }

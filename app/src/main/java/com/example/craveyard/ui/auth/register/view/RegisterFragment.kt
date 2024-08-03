@@ -1,7 +1,6 @@
 
 package com.example.craveyard.ui.auth.register.view
 
-import com.example.craveyard.ui.auth.login.repo.UserRepository
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -45,7 +44,6 @@ class RegisterFragment : Fragment() {
         viewModel.events.observe(viewLifecycleOwner){
             when(it){
                 is RegisterViewEvents.navigateToHome ->{
-                    UserRepository.setUser(it.user)
                     navigateToHome()
                 }
             }

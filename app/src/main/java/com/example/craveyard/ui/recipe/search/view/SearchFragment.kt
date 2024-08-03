@@ -1,7 +1,6 @@
 package com.example.craveyard.ui.recipe.search.view
 
 import APIClient
-import com.example.craveyard.ui.auth.login.repo.UserRepository
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.data.model.meals.Meal
-import com.example.craveyard.ui.recipe.favorite.repo.FavoriteRepositoryImpl
-import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModel
-import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModelFactory
 import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImpl
 import com.example.craveyard.data.model.Category
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
@@ -28,7 +24,6 @@ import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 class SearchFragment : Fragment() , ClickHandler {
     private lateinit var viewModel: SearchViewModel
-    private lateinit var favoriteViewModel: FavoriteViewModel
     private lateinit var adapter : MealsAdapter
 
     private var  meals :ArrayList<Meal> = ArrayList()
@@ -80,7 +75,7 @@ class SearchFragment : Fragment() , ClickHandler {
 
         }
 
-        adapter = MealsAdapter(meals,this, favoriteViewModel)
+        adapter = MealsAdapter(meals,this)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
@@ -93,8 +88,6 @@ class SearchFragment : Fragment() , ClickHandler {
         val searchViewModelFactory = SearchViewModelFactory(searchRepository = SearchRepositoryImpl(remoteDataSource = APIClient))
         viewModel = ViewModelProvider(this, searchViewModelFactory).get(SearchViewModel::class.java)
 
-        val favoriteViewModelFactory = FavoriteViewModelFactory(favoriteRepository = FavoriteRepositoryImpl(userRepository = UserRepository))
-        favoriteViewModel = ViewModelProvider(this, favoriteViewModelFactory).get(FavoriteViewModel::class.java)
     }
 
 

@@ -13,13 +13,11 @@ import com.bumptech.glide.Glide
 import com.example.craveyard.R
 import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
-import com.example.craveyard.ui.recipe.favorite.viewmodel.FavoriteViewModel
 
 
 class MealsAdapter(
     private val mealsList: MutableList<Meal>,
     private val clickHandler: ClickHandler,
-    private val viewModel: FavoriteViewModel
 ) : RecyclerView.Adapter<MealsAdapter.ViewHolder>() {
 
 
@@ -36,27 +34,27 @@ class MealsAdapter(
         holder.getMealName().text = meal.strMeal
         Glide.with(holder.getMealImage()).load(meal.strMealThumb).into(holder.getMealImage())
 
-        val isFavorite = viewModel.isFavorite(meal)
-
-        holder.getFavoriteBtn().setImageResource(
-            if (isFavorite) {
-                R.drawable.ic_favorite
-            }
-            else {
-                R.drawable.ic_favorite_border
-            }
-        )
-
-        // set favorite button click listener
-        holder.getFavoriteBtn().setOnClickListener {
-            if (isFavorite) {
-                removeMealFromFavorites(meal, holder)
-            } else {
-                addMealToFavorites(meal, holder)
-            }
-
-            //notifyItemChanged(position)
-        }
+//        val isFavorite = viewModel.isFavorite(meal)
+//
+//        holder.getFavoriteBtn().setImageResource(
+//            if (isFavorite) {
+//                R.drawable.ic_favorite
+//            }
+//            else {
+//                R.drawable.ic_favorite_border
+//            }
+//        )
+//
+//        // set favorite button click listener
+//        holder.getFavoriteBtn().setOnClickListener {
+//            if (isFavorite) {
+//                removeMealFromFavorites(meal, holder)
+//            } else {
+//                addMealToFavorites(meal, holder)
+//            }
+//
+//            //notifyItemChanged(position)
+//        }
 
         // set meal card click listener
         holder.meal.setOnClickListener {
@@ -67,7 +65,7 @@ class MealsAdapter(
     private fun addMealToFavorites(meal: Meal, holder: ViewHolder) {
         val context = holder.getFavoriteBtn().context
 
-        viewModel.addFavorite(meal)
+        //viewModel.addFavorite(meal)
         holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite)
         Toast.makeText(context, "Added to your favorites!", Toast.LENGTH_SHORT).show()
     }
@@ -79,7 +77,7 @@ class MealsAdapter(
             .setTitle("Remove Favorite")
             .setMessage("Are you sure you want to remove this meal from favorites?")
             .setPositiveButton("Yes") { _, _ ->
-                viewModel.removeFavorite(meal)
+                //viewModel.removeFavorite(meal)
                 holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite_border)
                 Toast.makeText(context, "Removed from your favorites!", Toast.LENGTH_SHORT).show()
             }

@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
 import com.example.craveyard.databinding.FragmentLoginBinding
 import com.example.craveyard.ui.auth.login.events.LoginViewEvents
-import com.example.craveyard.ui.auth.login.repo.UserRepository
 import com.example.craveyard.ui.auth.login.viewmodel.LoginViewModel
 import com.example.craveyard.ui.recipe.RecipeActivity
 
@@ -59,7 +58,6 @@ class LoginFragment : Fragment() {
 
                 is LoginViewEvents.navigateToHome -> {
                     Log.d("TAG", "observeLiveData: $it")
-                    UserRepository.setUser(it.user)
                     navigateToHome()
                 }
 
