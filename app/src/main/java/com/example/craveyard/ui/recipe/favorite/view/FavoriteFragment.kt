@@ -86,4 +86,8 @@ class FavoriteFragment : Fragment(), ClickHandler {
         findNavController().navigate(action)
     }
 
+    override fun onCategoryClick(category: Category) {
+        TODO("Not yet implemented")
+    }
+
 }
