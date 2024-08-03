@@ -25,7 +25,7 @@ class RecipeActivity : AppCompatActivity(){
 
     private lateinit var bottomNavigationView : BottomNavigationView
     private lateinit var navController : NavController
-    private lateinit var  toolbar:Toolbar
+    private lateinit var toolbar:Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
