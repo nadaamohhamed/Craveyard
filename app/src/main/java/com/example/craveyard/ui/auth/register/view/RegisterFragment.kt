@@ -53,7 +53,7 @@ class RegisterFragment : Fragment() {
     private fun navigateToHome() {
         val intent = Intent(requireActivity(), RecipeActivity::class.java)
         // finish the current activity
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
         if(intent.resolveActivity(requireActivity().packageManager) != null) {
             startActivity(intent)

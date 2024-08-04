@@ -2,6 +2,7 @@ package com.example.craveyard.ui.recipe
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -24,6 +25,9 @@ class RecipeActivity : AppCompatActivity(){
     private lateinit var bottomNavigationView : BottomNavigationView
     private lateinit var navController : NavController
     private lateinit var toolbar:Toolbar
+//    private val sharedPreferences by lazy {
+//        getSharedPreferences("my_preferences", MODE_PRIVATE)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +70,13 @@ class RecipeActivity : AppCompatActivity(){
 
     }
 
+//    override fun onDestroy() {
+//        val editor= sharedPreferences.edit()
+//        editor.putBoolean("splashShown",false)
+//        Log.d("splash", "ondestory")
+//        editor.commit()
+//        super.onDestroy()
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)

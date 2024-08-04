@@ -3,6 +3,7 @@ package com.example.craveyard.ui.auth
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,15 +31,21 @@ class AuthActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-       val editor= sharedPreferences.edit()
-        editor.putBoolean("opened",true)
-        editor.commit()
+        Log.d("splash", "onCreate: ${sharedPreferences.getBoolean("splashShown",false)}")
     }
 
     override fun onStart() {
         super.onStart()
         navController=findNavController(R.id.auth_nav_host)
 
+    }
+
+    override fun onDestroy() {
+        val editor= sharedPreferences.edit()
+        editor.putBoolean("splashShown",false)
+        Log.d("splash", "ondestory")
+        editor.commit()
+        super.onDestroy()
     }
 
     override fun onSupportNavigateUp(): Boolean {
