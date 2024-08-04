@@ -36,11 +36,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel=ViewModelProvider(this)[LoginViewModel::class.java]
-       if (viewModel.checkUserLogin()) {
-           val intent:Intent= Intent(requireContext(),RecipeActivity::class.java)
-           startActivity(intent)
-            requireActivity().finish()
-       }
         initViews()
         observeLiveData()
     }
@@ -56,6 +51,7 @@ class LoginFragment : Fragment() {
     private fun observeLiveData() {
         viewModel.events.observe(viewLifecycleOwner) {
             when (it) {
+
                 is LoginViewEvents.navigateToRegister -> {
                     navigateToRegister()
                 }

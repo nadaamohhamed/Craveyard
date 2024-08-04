@@ -80,10 +80,11 @@ class RecipeActivity : AppCompatActivity(){
             val intent = Intent(this, AuthActivity::class.java)
 
             // finish current activity
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
             if(intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
+                finish()
                 return true
             }
 

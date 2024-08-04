@@ -102,6 +102,7 @@ class MealsAdapter(
             .setMessage("Are you sure you want to remove this meal from favorites?")
             .setPositiveButton("Yes") { _, _ ->
                 viewModel.deleteFavMeal(favMeal)
+                viewModel.getFavMeals(Firebase.auth.currentUser!!.email!!)
                 holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite_border)
 
                 Toast.makeText(context, "Removed from your favorites!", Toast.LENGTH_SHORT).show()
