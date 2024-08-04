@@ -1,7 +1,7 @@
-package com.example.craveyard.ui.recipe.category
+package com.example.craveyard.ui.recipe.category.view
+
 
 import APIClient
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -22,6 +22,7 @@ import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
 import com.example.craveyard.ui.recipe.category.repo.CategoryRepositoryImpl
+
 import com.example.craveyard.ui.recipe.category.viewmodel.CategoryViewModel
 import com.example.craveyard.ui.recipe.category.viewmodel.CategoryViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter

@@ -2,7 +2,6 @@ package com.example.craveyard.ui.recipe.home.view
 
 import APIClient
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,6 @@ import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
-import com.example.craveyard.ui.about.adapter.CategoriesAdapter
 import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
