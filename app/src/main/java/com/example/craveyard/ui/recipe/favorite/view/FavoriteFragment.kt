@@ -37,14 +37,21 @@ class FavoriteFragment : Fragment(), ClickHandler {
         favViewModel = ViewModelProvider(this, favViewModelFactory).get(FavViewModel::class.java)
 
     }
+    private fun getfavorites() {
+
+        favViewModel.getFavMeals(Firebase.auth.currentUser!!.email!!)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         // initialize view model
         initializeViewModel()
         // get user's favorites
-
+        getfavorites()
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,7 +94,7 @@ class FavoriteFragment : Fragment(), ClickHandler {
                 empty.visibility = View.VISIBLE
             }
 
-            //adapter.notifyDataSetChanged()
+            adapter.notifyDataSetChanged()
 
         }
 

@@ -13,12 +13,15 @@ import com.google.firebase.auth.auth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FavViewModel(private val favRepo: FavRepoInterface):ViewModel() {
 
     private val _fav_meals = MutableLiveData<List<FavMeal>>()
     val favMeals: LiveData<List<FavMeal>> = _fav_meals
 
+    private val _meal = MutableLiveData<FavMeal>()
+    val meal: LiveData<FavMeal> = _meal
 
     fun insertFavMeal(favMeal: FavMeal){
         viewModelScope.launch {
@@ -29,6 +32,7 @@ class FavViewModel(private val favRepo: FavRepoInterface):ViewModel() {
     fun deleteFavMeal(favMeal: FavMeal){
         viewModelScope.launch {
             favRepo.deleteFavMeal(favMeal)
+            Log.d("asd","removed")
 
         }
 
@@ -40,12 +44,26 @@ class FavViewModel(private val favRepo: FavRepoInterface):ViewModel() {
         }
     }
 
-    fun isFavourite(favMeal:Meal,email:String):Boolean {
-        var x=false
-        viewModelScope.async {
-            x=favRepo.isFavorite(favMeal,Firebase.auth.currentUser!!.email!!)
+suspend fun getMeal(email: String, id:String): FavMeal {
+    val favMeal= withContext(Dispatchers.Default){
 
-        }
-       return x
+        val meal =favRepo.getMeal(email,id)
+        meal
     }
+    Log.d("asd","${favMeal.mealId}")
+    return favMeal
+
+}
+
+    suspend fun isFavorite(favMeal: Meal, email: String): Boolean {
+        val x= withContext(Dispatchers.Default) {
+            val meals = favRepo.getFavMeals(email)
+            meals.any { it.mealId == favMeal.idMeal }
+        }
+        return x
+    }
+
+
+
+
 }

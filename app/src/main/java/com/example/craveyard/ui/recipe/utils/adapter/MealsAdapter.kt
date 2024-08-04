@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
@@ -18,6 +19,9 @@ import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.supervisorScope
 
 
 class MealsAdapter(
@@ -40,38 +44,41 @@ class MealsAdapter(
         holder.getMealName().text = meal.strMeal
         Glide.with(holder.getMealImage()).load(meal.strMealThumb).into(holder.getMealImage())
 
+        var isFavorite :Boolean
+      viewModel.viewModelScope.launch {
+           isFavorite = viewModel.isFavorite(meal,Firebase.auth.currentUser!!.email!!)
+
+          holder.getFavoriteBtn().setImageResource(
+              if (isFavorite) {
+                  Log.d("asd","${isFavorite}")
+                  R.drawable.ic_favorite
+              }
+              else {
+                  Log.d("asd","${isFavorite}")
+                  R.drawable.ic_favorite_border
+              }
+          )
 
 
-       var isFavorite = viewModel.isFavourite(meal,Firebase.auth.currentUser!!.email!!)
-/*
-        holder.getFavoriteBtn().setImageResource(
-          if (isFavorite) {
-
-               R.drawable.ic_favorite
-         }
-            else {
-
-                R.drawable.ic_favorite_border
-           }
-        )*/
+      }
 
         // set favorite button click listener
         holder.getFavoriteBtn().setOnClickListener {
 
-            val favMeal=FavMeal(Firebase.auth.currentUser!!.email!!,meal.idMeal,meal.strMeal!!,
-                meal.strArea,meal.strCategory,meal.strInstructions!!,meal.strYoutube, meal.strMealThumb!!)
+            viewModel.viewModelScope.launch {
+                isFavorite = viewModel.isFavorite(meal,Firebase.auth.currentUser!!.email!!)
+                if (isFavorite) {
+                    val favMeal=viewModel.getMeal(Firebase.auth.currentUser!!.email!!,meal.idMeal)
+                    removeMealFromFavorites(favMeal, holder)
+                } else {
 
-            Log.d("asd","${isFavorite}")
-            if (isFavorite) {
-                holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite)
-                removeMealFromFavorites(favMeal, holder)
-            } else {
-                holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite_border)
+                    val favMeal=FavMeal(Firebase.auth.currentUser!!.email!!,meal.idMeal,meal.strMeal!!,
+                        meal.strArea,meal.strCategory,meal.strInstructions!!,meal.strYoutube, meal.strMealThumb!!)
 
-                addMealToFavorites(favMeal, holder)
+                    addMealToFavorites(favMeal, holder)
+                }
+               // notifyItemChanged(position)
             }
-
-           notifyItemChanged(position)
         }
 
         // set meal card click listener
@@ -83,17 +90,20 @@ class MealsAdapter(
     private fun addMealToFavorites(favMeal: FavMeal, holder: ViewHolder) {
         val context = holder.getFavoriteBtn().context
         viewModel.insertFavMeal(favMeal)
+        holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite)
+
         Toast.makeText(context, "Added to your favorites!", Toast.LENGTH_SHORT).show()
     }
 
     private fun removeMealFromFavorites(favMeal: FavMeal, holder: ViewHolder) {
-        val context = holder.getFavoriteBtn().context
-
+        val context = holder.itemView.context
         AlertDialog.Builder(context)
             .setTitle("Remove Favorite")
             .setMessage("Are you sure you want to remove this meal from favorites?")
             .setPositiveButton("Yes") { _, _ ->
                 viewModel.deleteFavMeal(favMeal)
+                holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite_border)
+
                 Toast.makeText(context, "Removed from your favorites!", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Cancel", null)

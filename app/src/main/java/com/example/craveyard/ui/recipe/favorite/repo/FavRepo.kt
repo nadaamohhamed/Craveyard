@@ -24,20 +24,9 @@ class FavRepo(private val localDsInterface: LocalDsInterface):FavRepoInterface {
         return localDsInterface.getFavMeals(email)
     }
 
-    override suspend fun isFavorite(favMeal: Meal, email: String): Boolean {
-        val x= withContext(Dispatchers.Default) {
-            val meals = localDsInterface.getFavMeals(email)
-            meals.any { it.mealId == favMeal.idMeal }
-        }
-
-        return x
+    override suspend fun getMeal(email: String, id: String): FavMeal {
+        return localDsInterface.getMeal(email,id)
     }
 
 
-
-/*    val meals = localDsInterface.getFavMeals(email)
-    for (meal in meals){
-        if (favMeal.idMeal==meal.mealId)
-            return true
-    }*/
 }

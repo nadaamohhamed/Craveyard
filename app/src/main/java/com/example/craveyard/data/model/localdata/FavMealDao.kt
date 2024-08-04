@@ -18,4 +18,7 @@ interface FavMealDao {
     @Query("SELECT * FROM favmeal WHERE userEmail ==:email")
     fun getFavMeals(email: String):List<FavMeal>
 
+    @Query("SELECT * FROM favmeal WHERE userEmail== :email and mealId==:id")
+    fun getMeal(email: String,id:String):FavMeal
+
 }

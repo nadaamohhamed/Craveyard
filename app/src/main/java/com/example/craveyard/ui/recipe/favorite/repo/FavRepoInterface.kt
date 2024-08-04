@@ -11,5 +11,6 @@ interface FavRepoInterface {
 
     suspend fun getFavMeals(email: String):List<FavMeal>
 
-    suspend fun isFavorite(favMeal: Meal, email: String): Boolean
+    suspend fun getMeal(email: String,id:String):FavMeal
+
 }

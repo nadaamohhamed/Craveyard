@@ -28,4 +28,8 @@ class LocalDs (context: Context) :LocalDsInterface {
     override suspend fun getFavMeals(email: String): List<FavMeal> {
         return favMealDao.getFavMeals(email)
     }
+
+    override suspend fun getMeal(email: String, id: String): FavMeal {
+        return favMealDao.getMeal(email,id)
+    }
 }

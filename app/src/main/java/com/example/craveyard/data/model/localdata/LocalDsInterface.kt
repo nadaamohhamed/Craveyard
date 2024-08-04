@@ -10,4 +10,6 @@ interface LocalDsInterface {
     suspend fun deleteFavMeal(favMeal: FavMeal)
 
     suspend fun getFavMeals(email: String):List<FavMeal>
+
+    suspend fun getMeal(email: String,id:String):FavMeal
 }
