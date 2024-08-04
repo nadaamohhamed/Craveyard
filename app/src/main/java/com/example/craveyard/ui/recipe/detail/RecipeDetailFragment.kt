@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
+import com.example.craveyard.ui.recipe.utils.ConnectionManager
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -66,24 +67,29 @@ class RecipeDetailFragment : Fragment() {
 
         }
 
-        youTubePlayerView.addYouTubePlayerListener(object :AbstractYouTubePlayerListener(){
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                super.onReady(youTubePlayer)
+        if(ConnectionManager.isNetworkAvailable(requireContext())){
+            youTubePlayerView.visibility=View.VISIBLE
+
+            youTubePlayerView.addYouTubePlayerListener(object :AbstractYouTubePlayerListener(){
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    super.onReady(youTubePlayer)
 
 
 
-                if(meal.strYoutube!=""){
-                    val array=meal.strYoutube.split("v=")
-                    youTubePlayer.loadVideo(array[1],0f)
-                }else
-                    youTubePlayer.loadVideo("",0f)
+                    if(meal.strYoutube!=""){
+                        val array=meal.strYoutube.split("v=")
+                        youTubePlayer.loadVideo(array[1],0f)
+                    }else
+                        youTubePlayer.loadVideo("",0f)
 
 
-            }
-        })
+                }
+            })
 
-
-
+        }
+        else{
+            youTubePlayerView.visibility=View.GONE
+        }
 
         return view
     }

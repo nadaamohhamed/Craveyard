@@ -22,6 +22,7 @@ import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory
+import com.example.craveyard.ui.recipe.utils.ConnectionManager
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
@@ -43,6 +44,16 @@ class SearchFragment : Fragment() , ClickHandler {
         getViewModel()
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         val searchView = view.findViewById<SearchView>(R.id.searchView)
+        val emptyText = view.findViewById<TextView>(R.id.empty_result)
+
+        if(ConnectionManager.isNetworkAvailable(requireContext())) {
+            searchView.visibility = View.VISIBLE
+        }
+        else{
+            searchView.visibility = View.GONE
+            emptyText.text = "Oops, no internet connection!"
+            emptyText.visibility = View.VISIBLE
+        }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
@@ -61,7 +72,7 @@ class SearchFragment : Fragment() , ClickHandler {
             }
         })
 
-        val emptyText = view.findViewById<TextView>(R.id.empty_result)
+
         viewModel.recipes.observe(viewLifecycleOwner) {
             if (it!=null){
                 meals.clear()

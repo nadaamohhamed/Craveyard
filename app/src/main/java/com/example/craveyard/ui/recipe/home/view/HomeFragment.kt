@@ -1,30 +1,37 @@
 package com.example.craveyard.ui.recipe.home.view
 
 import APIClient
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.data.model.meals.Meal
-import com.example.craveyard.ui.recipe.home.repo.HomeRepositoryImpl
 import com.example.craveyard.data.model.Category
 import com.example.craveyard.data.model.localdata.LocalDs
-import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
-import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
-import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
-import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
+import com.example.craveyard.data.model.meals.Meal
+import com.example.craveyard.ui.recipe.category.adapter.CategoriesAdapter
 import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
-import com.example.craveyard.ui.recipe.category.adapter.CategoriesAdapter
+import com.example.craveyard.ui.recipe.home.repo.HomeRepositoryImpl
+import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
+import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
+import com.example.craveyard.ui.recipe.utils.ConnectionManager
+import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
+import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 
 class HomeFragment : Fragment(), ClickHandler {
@@ -43,16 +50,17 @@ class HomeFragment : Fragment(), ClickHandler {
 
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // initialize view model
         initializeViewModel()
 
-        // get data
-        homeViewModel.getAllMeals()
-        homeViewModel.getRandomMeal()
-        homeViewModel.getCategories()
+        if(ConnectionManager.isNetworkAvailable(requireContext())) {
+            // get data
+            homeViewModel.getAllMeals()
+            homeViewModel.getRandomMeal()
+            homeViewModel.getCategories()
+        }
     }
 
 
@@ -64,9 +72,14 @@ class HomeFragment : Fragment(), ClickHandler {
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
 
         // initialize views
-        initializeTrendingMealView(view)
-        initializeAllMealsView(view)
-        initializeCategoriesView(view)
+        if(ConnectionManager.isNetworkAvailable(requireContext())) {
+            initializeTrendingMealView(view)
+            initializeAllMealsView(view)
+            initializeCategoriesView(view)
+        }
+        else{
+            // hide all titles and view empty no internet text
+        }
 
 
         return view
