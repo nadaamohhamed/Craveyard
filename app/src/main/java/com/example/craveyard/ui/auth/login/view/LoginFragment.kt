@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
 import com.example.craveyard.databinding.FragmentLoginBinding
+import com.example.craveyard.ui.auth.AuthActivity
 import com.example.craveyard.ui.auth.login.events.LoginViewEvents
 import com.example.craveyard.ui.auth.login.viewmodel.LoginViewModel
 import com.example.craveyard.ui.recipe.RecipeActivity
@@ -26,6 +27,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+
+
         return binding.root
     }
 
@@ -33,10 +36,15 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel=ViewModelProvider(this)[LoginViewModel::class.java]
-        viewModel.checkUserLogin(view.context)
+       if (viewModel.checkUserLogin()) {
+           val intent:Intent= Intent(requireContext(),RecipeActivity::class.java)
+           startActivity(intent)
+            requireActivity().finish()
+       }
         initViews()
         observeLiveData()
     }
+
 
 
 

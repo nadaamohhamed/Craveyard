@@ -33,7 +33,6 @@ class LoginViewModel : ViewModel(){
         if (isLogin.value == true) return
         if (!isValidInputs()) return
         isLogin.value = true
-
         auth.signInWithEmailAndPassword(emailLiveData.value!!, passwordLiveData.value!!)
             .addOnCompleteListener { task ->
                 isLogin.value=true
@@ -98,15 +97,7 @@ class LoginViewModel : ViewModel(){
         return isvalid
     }
 
-    fun checkUserLogin(context: Context){
-        if(Firebase.auth.currentUser==null)
-            return
-        else{
-            val intent=Intent(context,RecipeActivity::class.java)
-            context.startActivity(intent)
+    fun checkUserLogin():Boolean= Firebase.auth.currentUser!=null
 
-        }
-
-    }
 
 }
