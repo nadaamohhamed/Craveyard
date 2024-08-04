@@ -78,18 +78,18 @@ class LoginViewModel : ViewModel(){
     fun isValidInputs():Boolean{
         var isvalid = true
         if(emailLiveData.value.isNullOrBlank()){
-            emailError.value="Please Enter Email"
+            emailError.value="Please enter a valid email."
             isvalid=false
         }
         else{
             emailError.value=null
         }
         if(passwordLiveData.value.isNullOrBlank()){
-            passwordError.value="Please Enter Password"
+            passwordError.value="Please enter a valid password."
             isvalid=false
         }
         else if(passwordLiveData.value!!.length<6){
-            passwordError.value="Password too Short"
+            passwordError.value="Password is too short."
             isvalid=false
         }
         else{

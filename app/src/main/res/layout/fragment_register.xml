@@ -21,90 +21,122 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="40dp"
-            android:paddingBottom="120dp"
+            android:paddingBottom="40dp"
             android:text="@string/register"
             android:textColor="@color/light_red"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_fisrtname"
+        <TextView
+            android:id="@+id/tv_start_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:boxBackgroundMode="outline"
+            android:gravity="center"
+            android:text="@string/register_to_start_exploring_delicious_recipes"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/text_input_username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register_tv"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:hint="@string/username"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/light_red"
+            app:endIconTint="@color/light_red"
             app:error="@{vm.userNameError}"
-            app:layout_constraintTop_toBottomOf="@id/register_tv">
+            app:hintTextColor="@color/light_red"
+            app:layout_constraintTop_toBottomOf="@id/tv_start_register"
+            app:startIconTint="@color/light_red"
+            tools:layout_editor_absoluteX="26dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm.userNameLiveData}"/>
+                android:text="@={vm.userNameLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:boxBackgroundMode="outline"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/e_mail_address"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/light_red"
+            app:endIconTint="@color/light_red"
             app:error="@{vm.emailError}"
-            app:layout_constraintTop_toBottomOf="@id/text_input_fisrtname">
+            app:hintTextColor="@color/light_red"
+            app:layout_constraintTop_toBottomOf="@id/text_input_username"
+            app:startIconTint="@color/light_red"
+            tools:layout_editor_absoluteX="26dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm.emailLiveData}"/>
+                android:text="@={vm.emailLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/password"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:inputType="textPassword"
             app:boxBackgroundMode="outline"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
+            app:boxStrokeColor="@color/light_red"
+            app:endIconTint="@color/light_red"
             app:error="@{vm.passwordError}"
-            app:layout_constraintTop_toBottomOf="@id/text_input_email">
+            app:hintTextColor="@color/light_red"
+            app:layout_constraintTop_toBottomOf="@id/text_input_email"
+            app:passwordToggleEnabled="true"
+            app:startIconTint="@color/light_red"
+            tools:layout_editor_absoluteX="26dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm.passwordLiveData}"/>
+                android:text="@={vm.passwordLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_password_confirmation"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/password_confirmation"
-            app:error="@{vm.passwordConfirmationError}"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:inputType="textPassword"
             app:boxBackgroundMode="outline"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.MyCustomStyle"
-            app:layout_constraintTop_toBottomOf="@id/text_input_password">
+            app:boxStrokeColor="@color/light_red"
+            app:endIconTint="@color/light_red"
+            app:error="@{vm.passwordConfirmationError}"
+            app:hintTextColor="@color/light_red"
+            app:layout_constraintTop_toBottomOf="@id/text_input_password"
+            app:passwordToggleEnabled="true"
+            app:startIconTint="@color/light_red"
+            tools:layout_editor_absoluteX="26dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm.passwordConfirmationLiveData}"/>
+                android:text="@={vm.passwordConfirmationLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -112,9 +144,9 @@
             android:id="@+id/register_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="5dp"
             android:onClick="@{()->vm.register()}"
             app:cardBackgroundColor="@{vm.isRegisteringLiveData==true ? @color/white : @color/light_red}"
             app:cardCornerRadius="20dp"
@@ -131,6 +163,7 @@
                 android:text="@string/register"
                 android:textColor="@{vm.isRegisteringLiveData == true ? @color/black : @color/white}"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -153,6 +186,7 @@
                 android:layout_gravity="end|center_vertical"
                 android:indeterminate="true"
                 android:visibility="@{vm.isRegisteringLiveData == false ? View.GONE : View.VISIBLE}"
+                app:indicatorColor="@color/light_red"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

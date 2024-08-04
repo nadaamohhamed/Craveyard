@@ -59,35 +59,35 @@ class RegisterViewModel : ViewModel() {
     fun isValidInputs():Boolean{
         var isvalid = true
         if(userNameLiveData.value.isNullOrBlank()){
-            userNameError.value="Please Enter User Name"
+            userNameError.value="Please enter a valid username."
             isvalid=false
         }
         else{
             userNameError.value=null
         }
         if(emailLiveData.value.isNullOrBlank()){
-            emailError.value="Please Enter Email"
+            emailError.value="Please enter a valid email."
             isvalid=false
         }
         else{
             emailError.value=null
         }
         if(passwordLiveData.value.isNullOrBlank()){
-            passwordError.value="Please Enter Password"
+            passwordError.value="Please enter a valid password."
             isvalid=false
         }
         else if(passwordLiveData.value!!.length<6){
-            passwordError.value="Password too Short"
+            passwordError.value="Password is too short."
             isvalid=false
         }
         else{
             passwordError.value=null
         }
         if (passwordConfirmationLiveData.value.isNullOrBlank()) {
-            passwordConfirmationError.value = "please Enter password confirmation"
+            passwordConfirmationError.value = "Please enter a valid password confirmation."
             isvalid = false
         } else if (passwordLiveData.value!! != passwordConfirmationLiveData.value!!) {
-            passwordConfirmationError.value = "password doesn't match"
+            passwordConfirmationError.value = "Password doesn't match!"
             isvalid = false
         } else {
             passwordConfirmationError.value = null

@@ -24,6 +24,7 @@ import com.example.craveyard.ui.about.adapter.CategoriesAdapter
 import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
+import com.example.craveyard.ui.recipe.category.adapter.CategoriesAdapter
 
 
 class HomeFragment : Fragment(), ClickHandler {
@@ -47,6 +48,7 @@ class HomeFragment : Fragment(), ClickHandler {
         super.onCreate(savedInstanceState)
         // initialize view model
         initializeViewModel()
+
         // get data
         homeViewModel.getAllMeals()
         homeViewModel.getRandomMeal()
@@ -60,10 +62,12 @@ class HomeFragment : Fragment(), ClickHandler {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
+
         // initialize views
         initializeTrendingMealView(view)
         initializeAllMealsView(view)
         initializeCategoriesView(view)
+
 
         return view
     }

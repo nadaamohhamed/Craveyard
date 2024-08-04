@@ -1,9 +1,9 @@
-package com.example.craveyard.ui.recipe.category
+package com.example.craveyard.ui.recipe.category.repo
 
 import RemoteDataSource
 import com.example.craveyard.data.model.meals.Meals
 
-class CategoryRepositoryImplementation(private val remoteDataSource: RemoteDataSource) :
+class CategoryRepositoryImpl(private val remoteDataSource: RemoteDataSource) :
     CategoryRepository {
     override suspend fun getMealsByCategory(query: String): Meals {
         return remoteDataSource.getMealsByCategory(query)
