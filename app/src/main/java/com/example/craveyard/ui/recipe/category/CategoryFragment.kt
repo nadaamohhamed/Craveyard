@@ -14,7 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.data.model.Category
+import com.example.craveyard.data.model.localdata.LocalDs
 import com.example.craveyard.data.model.meals.Meal
+import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
@@ -39,7 +43,13 @@ class CategoryFragment : Fragment(), ClickHandler {
         viewModel.getMealsByCategory(category.strCategory)
         viewModel.meals.observe(viewLifecycleOwner){
             if (it!=null){
-                adapter = MealsAdapter(mealsList = it, clickHandler = this )
+
+                val localDs= LocalDs(requireContext())
+                val favViewModelFactory = FavViewModelFactory(FavRepo(localDs))
+
+                var favViewModel = ViewModelProvider(this, favViewModelFactory).get(FavViewModel::class.java)
+
+                adapter = MealsAdapter(mealsList = it, clickHandler = this,favViewModel )
                 recyclerView.layoutManager = LinearLayoutManager(context)
                 recyclerView.adapter = adapter
             }

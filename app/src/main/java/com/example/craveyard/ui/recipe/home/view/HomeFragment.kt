@@ -2,6 +2,7 @@ package com.example.craveyard.ui.recipe.home.view
 
 import APIClient
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,21 +15,30 @@ import com.example.craveyard.R
 import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.home.repo.HomeRepositoryImpl
 import com.example.craveyard.data.model.Category
+import com.example.craveyard.data.model.localdata.LocalDs
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModel
 import com.example.craveyard.ui.recipe.home.viewmodel.HomeViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 import com.example.craveyard.ui.about.adapter.CategoriesAdapter
+import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
 
 
 class HomeFragment : Fragment(), ClickHandler {
 
     lateinit var homeViewModel: HomeViewModel
+    lateinit var favViewModel: FavViewModel
 
     private fun initializeViewModel() {
 
         val homeViewModelFactory = HomeViewModelFactory(homeRepository = HomeRepositoryImpl(remoteDataSource = APIClient))
         homeViewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
+
+        val localDs= LocalDs(requireContext())
+        val favViewModelFactory = FavViewModelFactory(FavRepo(localDs))
+        favViewModel = ViewModelProvider(this, favViewModelFactory).get(FavViewModel::class.java)
 
     }
 
@@ -37,7 +47,6 @@ class HomeFragment : Fragment(), ClickHandler {
         super.onCreate(savedInstanceState)
         // initialize view model
         initializeViewModel()
-
         // get data
         homeViewModel.getAllMeals()
         homeViewModel.getRandomMeal()
@@ -51,12 +60,10 @@ class HomeFragment : Fragment(), ClickHandler {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
-
         // initialize views
         initializeTrendingMealView(view)
         initializeAllMealsView(view)
         initializeCategoriesView(view)
-
 
         return view
     }
@@ -77,7 +84,7 @@ class HomeFragment : Fragment(), ClickHandler {
         val rv = view.findViewById<RecyclerView>(R.id.rv_meals)
 
         homeViewModel.recipes.observe(viewLifecycleOwner) {
-            val adapter = MealsAdapter(it.toMutableList(), this)
+            val adapter = MealsAdapter(it.toMutableList(), this, favViewModel)
             rv.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             rv.adapter = adapter
         }
@@ -88,7 +95,7 @@ class HomeFragment : Fragment(), ClickHandler {
         val trendingMeal = view.findViewById<RecyclerView>(R.id.trending_meal)
 
         homeViewModel.randomMeal.observe(viewLifecycleOwner) {
-            val adapter = MealsAdapter(it.toMutableList(), this)
+            val adapter = MealsAdapter(it.toMutableList(), this, favViewModel)
             trendingMeal.layoutManager = LinearLayoutManager(context)
             trendingMeal.adapter = adapter
         }

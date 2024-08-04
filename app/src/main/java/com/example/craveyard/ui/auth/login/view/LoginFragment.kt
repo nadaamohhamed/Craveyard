@@ -35,6 +35,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel=ViewModelProvider(this)[LoginViewModel::class.java]
+        viewModel.checkUserLogin(view.context)
         initViews()
         Log.d("TAG", "onViewCreated: ")
         observeLiveData()

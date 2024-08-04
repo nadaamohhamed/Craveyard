@@ -14,20 +14,35 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.data.model.Category
+import com.example.craveyard.data.model.entity.FavMeal
+import com.example.craveyard.data.model.localdata.LocalDs
 import com.example.craveyard.data.model.meals.Meal
+import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
 
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
-
-
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class FavoriteFragment : Fragment(), ClickHandler {
 
+    private lateinit var favViewModel: FavViewModel
     private lateinit var adapter : MealsAdapter
 
+    private fun initializeViewModel(){
+        val localDs=LocalDs(requireContext())
+        val favViewModelFactory = FavViewModelFactory(FavRepo(localDs))
+        favViewModel = ViewModelProvider(this, favViewModelFactory).get(FavViewModel::class.java)
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // initialize view model
+        initializeViewModel()
+        // get user's favorites
 
     }
 
@@ -41,13 +56,43 @@ class FavoriteFragment : Fragment(), ClickHandler {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_favorites)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
+        val favorites : MutableList<Meal> = mutableListOf()
 
-        // remove empty results text
-//        empty.visibility = View.GONE
-//        // show empty results text
-//        empty.visibility = View.VISIBLE
+        favViewModel.getFavMeals(Firebase.auth.currentUser!!.email!!)
 
+        favViewModel.favMeals.observe(viewLifecycleOwner) {
+            val empty = view.findViewById<TextView>(R.id.emptyText)
 
+            if (it.isNotEmpty()){
+                favorites.clear()
+                for (mymeal in it){
+                    val meal =Meal(idMeal = mymeal.mealId,
+                        strMeal = mymeal.strMeal,
+                        strArea = mymeal.strArea,
+                        strCategory = mymeal.strCategory,
+                        strInstructions = mymeal.strInstructions,
+                        strYoutube = mymeal.strYoutube,
+                        strMealThumb = mymeal.MealThumb
+                    )
+                    favorites.add(meal)
+                }
+
+                // remove empty results text
+                empty.visibility = View.GONE
+
+            }
+            else{
+                favorites.clear()
+                // show empty results text
+                empty.visibility = View.VISIBLE
+            }
+
+            //adapter.notifyDataSetChanged()
+
+        }
+
+        adapter = MealsAdapter(favorites, this, favViewModel)
+        recyclerView.adapter = adapter
 
         return view
     }

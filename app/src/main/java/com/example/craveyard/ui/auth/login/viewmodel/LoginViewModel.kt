@@ -1,5 +1,7 @@
 package com.example.craveyard.ui.auth.login.viewmodel
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +11,7 @@ import com.example.craveyard.ui.auth.login.events.LoginViewEvents
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.example.craveyard.data.model.auth.ViewMessage
+import com.example.craveyard.ui.recipe.RecipeActivity
 
 class LoginViewModel : ViewModel(){
     val emailLiveData = MutableLiveData<String?>()
@@ -95,6 +98,15 @@ class LoginViewModel : ViewModel(){
         return isvalid
     }
 
+    fun checkUserLogin(context: Context){
+        if(Firebase.auth.currentUser==null)
+            return
+        else{
+            val intent=Intent(context,RecipeActivity::class.java)
+            context.startActivity(intent)
 
+        }
+
+    }
 
 }

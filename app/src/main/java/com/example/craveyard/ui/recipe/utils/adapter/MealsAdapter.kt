@@ -1,5 +1,6 @@
 package com.example.craveyard.ui.recipe.utils.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +12,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.craveyard.R
+import com.example.craveyard.data.model.entity.FavMeal
 import com.example.craveyard.data.model.meals.Meal
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 
 class MealsAdapter(
     private val mealsList: MutableList<Meal>,
     private val clickHandler: ClickHandler,
+    private val viewModel: FavViewModel
 ) : RecyclerView.Adapter<MealsAdapter.ViewHolder>() {
 
 
@@ -34,27 +40,39 @@ class MealsAdapter(
         holder.getMealName().text = meal.strMeal
         Glide.with(holder.getMealImage()).load(meal.strMealThumb).into(holder.getMealImage())
 
-//        val isFavorite = viewModel.isFavorite(meal)
-//
-//        holder.getFavoriteBtn().setImageResource(
-//            if (isFavorite) {
-//                R.drawable.ic_favorite
-//            }
-//            else {
-//                R.drawable.ic_favorite_border
-//            }
-//        )
-//
-//        // set favorite button click listener
-//        holder.getFavoriteBtn().setOnClickListener {
-//            if (isFavorite) {
-//                removeMealFromFavorites(meal, holder)
-//            } else {
-//                addMealToFavorites(meal, holder)
-//            }
-//
-//            //notifyItemChanged(position)
-//        }
+
+
+       var isFavorite = viewModel.isFavourite(meal,Firebase.auth.currentUser!!.email!!)
+/*
+        holder.getFavoriteBtn().setImageResource(
+          if (isFavorite) {
+
+               R.drawable.ic_favorite
+         }
+            else {
+
+                R.drawable.ic_favorite_border
+           }
+        )*/
+
+        // set favorite button click listener
+        holder.getFavoriteBtn().setOnClickListener {
+
+            val favMeal=FavMeal(Firebase.auth.currentUser!!.email!!,meal.idMeal,meal.strMeal!!,
+                meal.strArea,meal.strCategory,meal.strInstructions!!,meal.strYoutube, meal.strMealThumb!!)
+
+            Log.d("asd","${isFavorite}")
+            if (isFavorite) {
+                holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite)
+                removeMealFromFavorites(favMeal, holder)
+            } else {
+                holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite_border)
+
+                addMealToFavorites(favMeal, holder)
+            }
+
+           notifyItemChanged(position)
+        }
 
         // set meal card click listener
         holder.meal.setOnClickListener {
@@ -62,23 +80,20 @@ class MealsAdapter(
         }
     }
 
-    private fun addMealToFavorites(meal: Meal, holder: ViewHolder) {
+    private fun addMealToFavorites(favMeal: FavMeal, holder: ViewHolder) {
         val context = holder.getFavoriteBtn().context
-
-        //viewModel.addFavorite(meal)
-        holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite)
+        viewModel.insertFavMeal(favMeal)
         Toast.makeText(context, "Added to your favorites!", Toast.LENGTH_SHORT).show()
     }
 
-    private fun removeMealFromFavorites(meal: Meal, holder: ViewHolder) {
+    private fun removeMealFromFavorites(favMeal: FavMeal, holder: ViewHolder) {
         val context = holder.getFavoriteBtn().context
 
         AlertDialog.Builder(context)
             .setTitle("Remove Favorite")
             .setMessage("Are you sure you want to remove this meal from favorites?")
             .setPositiveButton("Yes") { _, _ ->
-                //viewModel.removeFavorite(meal)
-                holder.getFavoriteBtn().setImageResource(R.drawable.ic_favorite_border)
+                viewModel.deleteFavMeal(favMeal)
                 Toast.makeText(context, "Removed from your favorites!", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Cancel", null)

@@ -16,6 +16,10 @@ import com.example.craveyard.R
 import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImpl
 import com.example.craveyard.data.model.Category
+import com.example.craveyard.data.model.localdata.LocalDs
+import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
+import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
@@ -24,6 +28,7 @@ import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
 class SearchFragment : Fragment() , ClickHandler {
     private lateinit var viewModel: SearchViewModel
+    private lateinit var favViewModel: FavViewModel
     private lateinit var adapter : MealsAdapter
 
     private var  meals :ArrayList<Meal> = ArrayList()
@@ -75,7 +80,7 @@ class SearchFragment : Fragment() , ClickHandler {
 
         }
 
-        adapter = MealsAdapter(meals,this)
+        adapter = MealsAdapter(meals,this, favViewModel)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
@@ -87,6 +92,10 @@ class SearchFragment : Fragment() , ClickHandler {
 
         val searchViewModelFactory = SearchViewModelFactory(searchRepository = SearchRepositoryImpl(remoteDataSource = APIClient))
         viewModel = ViewModelProvider(this, searchViewModelFactory).get(SearchViewModel::class.java)
+
+        val localDs= LocalDs(requireContext())
+        val favViewModelFactory = FavViewModelFactory(FavRepo(localDs))
+        favViewModel = ViewModelProvider(this, favViewModelFactory).get(FavViewModel::class.java)
 
     }
 
