@@ -69,18 +69,11 @@ class HomeFragment : Fragment(), ClickHandler {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         val noInternetText = view.findViewById<TextView>(R.id.no_internet_text)
         val trendingMealText = view.findViewById<TextView>(R.id.trending_meal_text)
         val allMealsText = view.findViewById<TextView>(R.id.list_text)
         val categoriesText = view.findViewById<TextView>(R.id.category_text)
-
-        // initialize views
 
         // first case: no fetched data and there is internet -> fetch & initialize normally
         if(!fetchedData && ConnectionManager.isNetworkAvailable(requireContext())) {
@@ -106,12 +99,17 @@ class HomeFragment : Fragment(), ClickHandler {
             allMealsText.visibility = View.GONE
             categoriesText.visibility = View.GONE
         }
-        
+
         // initialize views
         initializeTrendingMealView(view)
         initializeAllMealsView(view)
         initializeCategoriesView(view)
 
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Handle the back press in Fragment
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
