@@ -37,11 +37,9 @@ class LoginViewModel : ViewModel(){
 
                 } else {
                     isLogin.value=false
-                    // TODO: fix showing this error
-                    emailError.value= task.exception?.localizedMessage?:"something went wrong"
-//                    viewMessageLiveData.value= ViewMessage(
-//                        message=task.exception?.localizedMessage?:"Something went wrong."
-//                    )
+                    viewMessageLiveData.value= ViewMessage(
+                        message=task.exception?.localizedMessage?:"Something went wrong."
+                    )
                 }
 
             }
