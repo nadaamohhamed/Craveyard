@@ -55,7 +55,6 @@ class LoginViewModel : ViewModel(){
                         message = "Login successfully...")
                 )
                 events.postValue(LoginViewEvents.navigateToHome(user!!))
-
             }
             else{
                 viewMessageLiveData.postValue(
