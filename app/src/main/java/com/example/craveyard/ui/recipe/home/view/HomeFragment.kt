@@ -2,6 +2,7 @@ package com.example.craveyard.ui.recipe.home.view
 
 import APIClient
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ class HomeFragment : Fragment(), ClickHandler {
 
     lateinit var homeViewModel: HomeViewModel
     lateinit var favViewModel: FavViewModel
+    private var fetchedData = false
 
     private fun initializeViewModel() {
 
@@ -55,6 +57,8 @@ class HomeFragment : Fragment(), ClickHandler {
             homeViewModel.getAllMeals()
             homeViewModel.getRandomMeal()
             homeViewModel.getCategories()
+
+            fetchedData = true
         }
     }
 
@@ -65,6 +69,11 @@ class HomeFragment : Fragment(), ClickHandler {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val noInternetText = view.findViewById<TextView>(R.id.no_internet_text)
         val trendingMealText = view.findViewById<TextView>(R.id.trending_meal_text)
@@ -72,33 +81,37 @@ class HomeFragment : Fragment(), ClickHandler {
         val categoriesText = view.findViewById<TextView>(R.id.category_text)
 
         // initialize views
-        if(ConnectionManager.isNetworkAvailable(requireContext())) {
-            noInternetText.visibility = View.GONE
 
+        // first case: no fetched data and there is internet -> fetch & initialize normally
+        if(!fetchedData && ConnectionManager.isNetworkAvailable(requireContext())) {
+            homeViewModel.getAllMeals()
+            homeViewModel.getRandomMeal()
+            homeViewModel.getCategories()
+            fetchedData = true
+        }
+        // second case: fetched data and there is internet -> don't show no internet text and initialize normally (like local data fetched)
+        else if(ConnectionManager.isNetworkAvailable(requireContext())) {
+            noInternetText.visibility = View.GONE
             // show titles
             trendingMealText.visibility = View.VISIBLE
             allMealsText.visibility = View.VISIBLE
             categoriesText.visibility = View.VISIBLE
 
         }
-        else{
+        // third case: no fetched data and no internet -> show no internet text and hide titles
+        else if(!fetchedData && !ConnectionManager.isNetworkAvailable(requireContext())) {
             noInternetText.visibility = View.VISIBLE
             // hide rest of the titles
             trendingMealText.visibility = View.GONE
             allMealsText.visibility = View.GONE
             categoriesText.visibility = View.GONE
         }
-
+        
         // initialize views
         initializeTrendingMealView(view)
         initializeAllMealsView(view)
         initializeCategoriesView(view)
 
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         // Handle the back press in Fragment
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
