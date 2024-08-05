@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.craveyard.R
@@ -40,6 +42,7 @@ class RegisterFragment : Fragment() {
                 }
             }
         )
+
         return binding.root
 
     }
@@ -60,7 +63,13 @@ class RegisterFragment : Fragment() {
                 }
             }
         }
+        viewModel.viewMessageLiveData.observe(viewLifecycleOwner, Observer { viewMessage ->
+            viewMessage?.let {
+                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
 
     private fun navigateToHome() {
         val intent = Intent(requireActivity(), RecipeActivity::class.java)

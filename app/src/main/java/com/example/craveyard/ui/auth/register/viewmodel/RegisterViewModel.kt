@@ -43,7 +43,6 @@ class RegisterViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     val user = task.result.user
                     createUserInDB(user!!.uid)
-                    // TODO: fix showing this
                     viewMessageLiveData.value= ViewMessage(
                         message=task.exception?.localizedMessage?:"Registering successfully...")
 
@@ -51,7 +50,7 @@ class RegisterViewModel : ViewModel() {
                     isRegisteringLiveData.value=false
                     // TODO: fix showing this error
                     viewMessageLiveData.value= ViewMessage(
-                        message=task.exception?.localizedMessage?:"Something went wrong."
+                        message="Something went wrong."
                     )
                 }
 
