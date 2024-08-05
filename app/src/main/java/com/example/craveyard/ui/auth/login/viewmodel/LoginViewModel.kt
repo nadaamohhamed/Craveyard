@@ -37,7 +37,7 @@ class LoginViewModel : ViewModel(){
 
                 } else {
                     isLogin.value=false
-                    // TODO: fix showing this error
+
                     viewMessageLiveData.value= ViewMessage(
                         message=task.exception?.localizedMessage?:"Something went wrong."
                     )
