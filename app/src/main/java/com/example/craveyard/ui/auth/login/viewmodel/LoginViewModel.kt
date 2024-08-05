@@ -1,17 +1,13 @@
 package com.example.craveyard.ui.auth.login.viewmodel
 
-import android.content.Context
-import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.craveyard.data.db.MyDataBase
 import com.example.craveyard.data.model.auth.User
+import com.example.craveyard.data.model.auth.ViewMessage
 import com.example.craveyard.ui.auth.login.events.LoginViewEvents
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.example.craveyard.data.model.auth.ViewMessage
-import com.example.craveyard.ui.recipe.RecipeActivity
 
 class LoginViewModel : ViewModel(){
     val emailLiveData = MutableLiveData<String?>()
@@ -28,7 +24,6 @@ class LoginViewModel : ViewModel(){
     val events = MutableLiveData<LoginViewEvents>()
 
 
-
     fun login() {
         if (isLogin.value == true) return
         if (!isValidInputs()) return
@@ -42,8 +37,9 @@ class LoginViewModel : ViewModel(){
 
                 } else {
                     isLogin.value=false
+                    // TODO: fix showing this error
                     viewMessageLiveData.value= ViewMessage(
-                        message=task.exception?.localizedMessage?:"Somthing went wrong"
+                        message=task.exception?.localizedMessage?:"Something went wrong."
                     )
                 }
 
@@ -70,26 +66,29 @@ class LoginViewModel : ViewModel(){
     }
 
     fun isValidInputs():Boolean{
-        var isvalid = true
-        if(emailLiveData.value.isNullOrBlank()){
-            emailError.value="Please enter a valid email."
-            isvalid=false
+        var isValid = true
+
+        // email validation for empty email
+        val email = emailLiveData.value
+        if (email.isNullOrBlank()){
+            isValid = false
+            emailError.value="Please enter a valid email address."
         }
         else{
             emailError.value=null
         }
-        if(passwordLiveData.value.isNullOrBlank()){
+
+        // password validation for empty password
+        val password = passwordLiveData.value
+        if (password.isNullOrBlank()){
+            isValid = false
             passwordError.value="Please enter a valid password."
-            isvalid=false
-        }
-        else if(passwordLiveData.value!!.length<6){
-            passwordError.value="Password is too short."
-            isvalid=false
         }
         else{
             passwordError.value=null
         }
-        return isvalid
+
+        return isValid
     }
 
     fun checkUserLogin():Boolean= Firebase.auth.currentUser!=null
