@@ -59,8 +59,7 @@ class RecipeDetailFragment : Fragment() {
         mealName=view.findViewById(R.id.detail_meal_name)
         mealCategory=view.findViewById(R.id.detail_category)
         mealArea=view.findViewById(R.id.detail_meal_area)
-        reciepeText=view.findViewById(R.id.meal_ins)
-        readmore=view.findViewById(R.id.readmore)
+        reciepeText=view.findViewById(R.id.readmore)
         youTubePlayerView=view.findViewById(R.id.youtube_view)
         favBtn=view.findViewById(R.id.detail_image_Button)
 
@@ -80,17 +79,17 @@ class RecipeDetailFragment : Fragment() {
         reciepeText.text="Recipe details:\n${meal.strInstructions}"
 
 
-        readmore.setOnClickListener(){
-            if (readmore.text.equals(getString(R.string.read_more))){
-                reciepeText.maxLines=50
-                readmore.text=getString(R.string.show_less)
-            }else{
-                reciepeText.maxLines=4
-                readmore.text=getString(R.string.read_more)
-            }
-
-
-        }
+//        readmore.setOnClickListener(){
+//            if (readmore.text.equals(getString(R.string.read_more))){
+//                reciepeText.maxLines=50
+//                readmore.text=getString(R.string.show_less)
+//            }else{
+//                reciepeText.maxLines=4
+//                readmore.text=getString(R.string.read_more)
+//            }
+//
+//
+//        }
 
 
         favViewModel.viewModelScope.launch {
