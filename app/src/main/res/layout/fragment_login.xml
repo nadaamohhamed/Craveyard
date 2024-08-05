@@ -71,7 +71,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/password"
-            android:inputType="textPassword"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@color/light_red"
             app:endIconTint="@color/light_red"
@@ -85,6 +84,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="textPassword"
                 android:text="@={vm.passwordLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
