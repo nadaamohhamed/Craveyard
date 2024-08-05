@@ -31,4 +31,8 @@
     <string name="category_name">Category Name</string>
     <string name="no_internet">No internet connection, please try again later.</string>
     <string name="categories">Categories</string>
+    <string name="about_app">
+        Craveyard is your ultimate mobile recipe app for discovering a diverse selection of dishes from various cuisines.
+        \n\nCrafted by the developers mentioned above, finding inspiration for your next meal is just a tap away!
+    </string>
 </resources>
