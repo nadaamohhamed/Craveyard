@@ -126,20 +126,15 @@ class RecipeDetailFragment : Fragment() {
         }
 
 
-        if(ConnectionManager.isNetworkAvailable(requireContext())){
+        if(ConnectionManager.isNetworkAvailable(requireContext()) && meal.strYoutube!=""){
             youTubePlayerView.visibility=View.VISIBLE
 
             youTubePlayerView.addYouTubePlayerListener(object :AbstractYouTubePlayerListener(){
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     super.onReady(youTubePlayer)
 
-
-
-                    if(meal.strYoutube!=""){
                         val array=meal.strYoutube.split("v=")
                         youTubePlayer.loadVideo(array[1],0f)
-                    }else
-                        youTubePlayer.loadVideo("",0f)
 
 
                 }
