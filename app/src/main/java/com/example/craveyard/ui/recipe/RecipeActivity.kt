@@ -52,6 +52,7 @@ class RecipeActivity : AppCompatActivity(){
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navController = findNavController(R.id.recipe_nav_host)
         bottomNavigationView.setupWithNavController(navController)
+        toolbar.setupWithNavController(navController)
 
 
         navController.addOnDestinationChangedListener(){_,destination,_ ->

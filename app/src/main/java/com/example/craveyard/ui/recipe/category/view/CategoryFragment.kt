@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -28,7 +28,6 @@ import com.example.craveyard.ui.recipe.category.viewmodel.CategoryViewModel
 import com.example.craveyard.ui.recipe.category.viewmodel.CategoryViewModelFactory
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
-import com.example.craveyard.ui.recipe.utils.connection.ConnectionManager
 
 
 class CategoryFragment : Fragment(), ClickHandler {
@@ -38,39 +37,23 @@ class CategoryFragment : Fragment(), ClickHandler {
 
     private val args : CategoryFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        getViewModel()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_category, container, false)
-
-        // handle no internet
-        val noInternetText = view?.findViewById<TextView>(R.id.no_internet_category)
-        val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
-
-        // get data category if there is internet
-        if(ConnectionManager.isNetworkAvailable(requireContext())){
-            val category = args.Category
-            viewModel.getMealsByCategory(category.strCategory)
-            noInternetText?.visibility = View.GONE
-        }
-        else{
-            noInternetText?.visibility = View.VISIBLE
-            progressBar?.visibility = View.GONE
-        }
+        getViewModel()
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_category)
-
+        val category = args.Category
+        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
+        toolbar.title = category.strCategory
+        viewModel.getMealsByCategory(category.strCategory)
         viewModel.meals.observe(viewLifecycleOwner){
             // show progress bar
-
-            progressBar?.visibility = View.VISIBLE
+            val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
+            progressBar.setVisibility(View.VISIBLE);
 
             if (it!=null){
 
@@ -84,7 +67,7 @@ class CategoryFragment : Fragment(), ClickHandler {
                 recyclerView.adapter = adapter
 
                 // hide progress bar
-                progressBar?.visibility = View.GONE
+                progressBar.setVisibility(View.GONE);
             }
         }
 
