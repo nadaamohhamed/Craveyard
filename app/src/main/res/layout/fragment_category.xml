@@ -16,10 +16,11 @@
             android:id="@+id/no_internet_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="241dp"
+            android:layout_marginTop="282dp"
             android:gravity="center"
             android:text="@string/no_internet"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 

@@ -41,18 +41,6 @@ class CategoryFragment : Fragment(), ClickHandler {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getViewModel()
-
-        val noInternetText = view?.findViewById<TextView>(R.id.no_internet_text)
-
-        // get data category if there is internet
-        if(ConnectionManager.isNetworkAvailable(requireContext())){
-            val category = args.Category
-            viewModel.getMealsByCategory(category.strCategory)
-            noInternetText?.visibility = View.GONE
-        }
-        else{
-            noInternetText?.visibility = View.VISIBLE
-        }
     }
 
     override fun onCreateView(
@@ -62,12 +50,27 @@ class CategoryFragment : Fragment(), ClickHandler {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_category, container, false)
 
+        // handle no internet
+        val noInternetText = view?.findViewById<TextView>(R.id.no_internet_category)
+        val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
+
+        // get data category if there is internet
+        if(ConnectionManager.isNetworkAvailable(requireContext())){
+            val category = args.Category
+            viewModel.getMealsByCategory(category.strCategory)
+            noInternetText?.visibility = View.GONE
+        }
+        else{
+            noInternetText?.visibility = View.VISIBLE
+            progressBar?.visibility = View.GONE
+        }
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_category)
 
         viewModel.meals.observe(viewLifecycleOwner){
             // show progress bar
-            val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
-            progressBar.setVisibility(View.VISIBLE);
+
+            progressBar?.visibility = View.VISIBLE
 
             if (it!=null){
 
@@ -81,7 +84,7 @@ class CategoryFragment : Fragment(), ClickHandler {
                 recyclerView.adapter = adapter
 
                 // hide progress bar
-                progressBar.setVisibility(View.GONE);
+                progressBar?.visibility = View.GONE
             }
         }
 
