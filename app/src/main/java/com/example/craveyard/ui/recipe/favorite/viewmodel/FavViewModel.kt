@@ -50,7 +50,6 @@ suspend fun getMeal(email: String, id:String): FavMeal {
         val meal =favRepo.getMeal(email,id)
         meal
     }
-    Log.d("asd","${favMeal.mealId}")
     return favMeal
 
 }

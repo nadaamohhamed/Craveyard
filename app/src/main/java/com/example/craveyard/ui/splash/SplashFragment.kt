@@ -3,6 +3,7 @@ package com.example.craveyard.ui.splash
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -57,7 +58,6 @@ class SplashFragment : Fragment() {
         if (loggedIn) {
             val intent = Intent(requireContext(), RecipeActivity::class.java)
             startActivity(intent)
-            requireActivity().finish()
         } else {
             findNavController().navigate(
                 R.id.action_splashFragment_to_loginFragment, null, NavOptions.Builder()
