@@ -1,5 +1,5 @@
 
-import com.example.craveyard.data.model.Categories
+import com.example.craveyard.data.model.category.Categories
 import com.example.craveyard.data.model.meals.Meals
 import com.example.craveyard.network.RetrofitHelper
 import kotlin.random.Random

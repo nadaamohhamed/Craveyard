@@ -15,8 +15,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.data.model.Category
-import com.example.craveyard.data.model.localdata.LocalDs
+import com.example.craveyard.data.model.category.Category
+import com.example.craveyard.data.db.localdata.LocalDs
 import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel

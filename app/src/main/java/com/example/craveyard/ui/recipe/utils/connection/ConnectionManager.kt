@@ -1,4 +1,4 @@
-package com.example.craveyard.ui.recipe.utils
+package com.example.craveyard.ui.recipe.utils.connection
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -2,7 +2,7 @@ package com.example.craveyard.ui.recipe.favorite.repo
 
 import android.util.Log
 import com.example.craveyard.data.model.entity.FavMeal
-import com.example.craveyard.data.model.localdata.LocalDsInterface
+import com.example.craveyard.data.db.localdata.LocalDsInterface
 import com.example.craveyard.data.model.meals.Meal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

@@ -64,7 +64,7 @@
         tools:layout="@layout/fragment_category" >
         <argument
             android:name="Category"
-            app:argType="com.example.craveyard.data.model.Category" />
+            app:argType="com.example.craveyard.data.model.category.Category" />
         <action
             android:id="@+id/action_categoryFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />

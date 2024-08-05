@@ -29,4 +29,6 @@
     <string name="password_confirmation">Password Confirmation</string>
     <string name="register_to_start_exploring_delicious_recipes">Register to start exploring delicious recipes!</string>
     <string name="category_name">Category Name</string>
+    <string name="no_internet">No internet connection, please try again later.</string>
+    <string name="categories">Categories</string>
 </resources>

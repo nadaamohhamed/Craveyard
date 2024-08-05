@@ -41,21 +41,19 @@ class LoginFragment : Fragment() {
         initViews()
         observeLiveData()
 
-        // Handle the back press in Fragment
+            // Handle the back press in Fragment
                 requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
                     override fun handleOnBackPressed() {
                         val builder= AlertDialog.Builder(requireContext())
-                        builder.setTitle("Exit")
-                        builder.setMessage("Are you sure u want to Back")
+                        builder.setTitle("Confirmation")
+                        builder.setMessage("Are you sure u want to exit?")
                         builder.setPositiveButton("Yes"){_, _->
                             requireActivity().finishAffinity()
                         }
                         builder.setNegativeButton("No"){_,_->
-
                         }
                         builder.create()
                         builder.show()
-
                     }
                 })
     }

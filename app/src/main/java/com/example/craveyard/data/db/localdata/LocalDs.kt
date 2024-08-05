@@ -1,17 +1,17 @@
-package com.example.craveyard.data.model.localdata
+package com.example.craveyard.data.db.localdata
 
 import android.content.Context
 import com.example.craveyard.data.model.entity.FavMeal
 
-class LocalDs (context: Context) :LocalDsInterface {
+class LocalDs (context: Context) : LocalDsInterface {
 
 
-   private  var db:UserDatabase
-    private  var favMealDao:FavMealDao
+   private  var db: UserDatabase
+    private  var favMealDao: FavMealDao
 
 
     init {
-        db=UserDatabase.getInstance(context)
+        db= UserDatabase.getInstance(context)
         favMealDao=db.getFavMealDao()
     }
 

@@ -1,4 +1,4 @@
-package com.example.craveyard.data.model.localdata
+package com.example.craveyard.data.db.localdata
 
 import androidx.room.Dao
 import androidx.room.Delete

@@ -13,9 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
-import com.example.craveyard.data.model.Category
-import com.example.craveyard.data.model.entity.FavMeal
-import com.example.craveyard.data.model.localdata.LocalDs
+import com.example.craveyard.data.model.category.Category
+import com.example.craveyard.data.db.localdata.LocalDs
 import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
@@ -32,7 +31,7 @@ class FavoriteFragment : Fragment(), ClickHandler {
     private lateinit var adapter : MealsAdapter
 
     private fun initializeViewModel(){
-        val localDs=LocalDs(requireContext())
+        val localDs= LocalDs(requireContext())
         val favViewModelFactory = FavViewModelFactory(FavRepo(localDs))
         favViewModel = ViewModelProvider(this, favViewModelFactory).get(FavViewModel::class.java)
 

@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.craveyard.R
 import com.example.craveyard.data.model.meals.Meal
 import com.example.craveyard.ui.recipe.search.repo.SearchRepositoryImpl
-import com.example.craveyard.data.model.Category
-import com.example.craveyard.data.model.localdata.LocalDs
+import com.example.craveyard.data.model.category.Category
+import com.example.craveyard.data.db.localdata.LocalDs
 import com.example.craveyard.ui.recipe.favorite.repo.FavRepo
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModel
 import com.example.craveyard.ui.recipe.favorite.viewmodel.FavViewModelFactory
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModel
 import com.example.craveyard.ui.recipe.search.viewmodel.SearchViewModelFactory
-import com.example.craveyard.ui.recipe.utils.ConnectionManager
+import com.example.craveyard.ui.recipe.utils.connection.ConnectionManager
 import com.example.craveyard.ui.recipe.utils.adapter.MealsAdapter
 import com.example.craveyard.ui.recipe.utils.clickhandler.ClickHandler
 
@@ -48,10 +48,11 @@ class SearchFragment : Fragment() , ClickHandler {
 
         if(ConnectionManager.isNetworkAvailable(requireContext())) {
             searchView.visibility = View.VISIBLE
+            emptyText.text = "No results found."
         }
         else{
             searchView.visibility = View.GONE
-            emptyText.text = "Oops, no internet connection!"
+            emptyText.text = "No internet connection, please try again later."
             emptyText.visibility = View.VISIBLE
         }
 
