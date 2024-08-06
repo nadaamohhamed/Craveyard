@@ -37,7 +37,6 @@ class LoginViewModel : ViewModel(){
 
                 } else {
                     isLogin.value=false
-                    // TODO: fix showing this error
                     viewMessageLiveData.value= ViewMessage(
                         message=task.exception?.localizedMessage?:"Something went wrong."
                     )
@@ -51,6 +50,10 @@ class LoginViewModel : ViewModel(){
             if(it.isSuccessful){
                 isLogin.value=false
                 val user = it.result.toObject(User::class.java)
+                viewMessageLiveData.postValue(
+                    ViewMessage(
+                        message = "Login successfully...")
+                )
                 events.postValue(LoginViewEvents.navigateToHome(user!!))
             }
             else{

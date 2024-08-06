@@ -43,15 +43,13 @@ class RegisterViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     val user = task.result.user
                     createUserInDB(user!!.uid)
-                    // TODO: fix showing this
                     viewMessageLiveData.value= ViewMessage(
                         message=task.exception?.localizedMessage?:"Registering successfully...")
 
                 } else {
                     isRegisteringLiveData.value=false
-                    // TODO: fix showing this error
                     viewMessageLiveData.value= ViewMessage(
-                        message=task.exception?.localizedMessage?:"Something went wrong."
+                        message="Something went wrong."
                     )
                 }
 
@@ -60,6 +58,16 @@ class RegisterViewModel : ViewModel() {
 
     fun isValidInputs():Boolean{
         var isValid = true
+
+        // username validation for empty username
+        val username = userNameLiveData.value
+        if (username.isNullOrBlank()){
+            isValid = false
+            userNameError.value="Please enter a valid username."
+        }
+        else{
+            userNameError.value=null
+        }
 
 //        1.	^                 # Start of the string.
 //        2.	[a-zA-Z0-9._-]+   # Matches one or more of the following characters: lowercase letters, uppercase letters, digits, periods, underscores, or hyphens.
@@ -111,7 +119,11 @@ class RegisterViewModel : ViewModel() {
 
         // password confirmation validation
         val passwordConfirmation = passwordConfirmationLiveData.value
-       if (validPassword && password != passwordConfirmation) {
+        if(passwordConfirmation.isNullOrBlank()){
+            isValid = false
+            passwordConfirmationError.value="Please enter a valid password confirmation!"
+        }
+        else if (validPassword && password != passwordConfirmation) {
             passwordConfirmationError.value = "Passwords doesn't match, please enter a valid password confirmation!"
             isValid = false
         } else {

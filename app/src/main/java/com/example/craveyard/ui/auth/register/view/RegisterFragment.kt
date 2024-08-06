@@ -6,8 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.craveyard.R
 import com.example.craveyard.databinding.FragmentRegisterBinding
 import com.example.craveyard.ui.auth.register.events.RegisterViewEvents
 import com.example.craveyard.ui.auth.register.viewmodel.RegisterViewModel
@@ -28,6 +33,16 @@ class RegisterFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding=FragmentRegisterBinding.inflate(inflater, container, false)
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                }
+            }
+        )
+
         return binding.root
 
     }
@@ -48,7 +63,13 @@ class RegisterFragment : Fragment() {
                 }
             }
         }
+        viewModel.viewMessageLiveData.observe(viewLifecycleOwner, Observer { viewMessage ->
+            viewMessage?.let {
+                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
 
     private fun navigateToHome() {
         val intent = Intent(requireActivity(), RecipeActivity::class.java)

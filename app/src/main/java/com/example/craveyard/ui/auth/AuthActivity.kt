@@ -1,5 +1,6 @@
 package com.example.craveyard.ui.auth
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -17,10 +18,7 @@ class AuthActivity : AppCompatActivity() {
 
 
     lateinit var navController: NavController
-    private val sharedPreferences by lazy {
-        getSharedPreferences("my_preferences", MODE_PRIVATE)
-    }
-
+    lateinit var  sharedPreferences:SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,7 +28,9 @@ class AuthActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        Log.d("splash", "onCreate: ${sharedPreferences.getBoolean("splashShown",false)}")
+        sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+
+        Log.d("asd", "onCreate: ${sharedPreferences.getBoolean("splashShown",false)}")
     }
 
     override fun onStart() {
@@ -42,8 +42,9 @@ class AuthActivity : AppCompatActivity() {
     override fun onDestroy() {
         val editor= sharedPreferences.edit()
         editor.putBoolean("splashShown",false)
-        Log.d("splash", "ondestory")
+        Log.d("asd", "ondestory")
         editor.commit()
+        Log.d("asd","${sharedPreferences.getBoolean("splashShown",true)}")
         super.onDestroy()
     }
 

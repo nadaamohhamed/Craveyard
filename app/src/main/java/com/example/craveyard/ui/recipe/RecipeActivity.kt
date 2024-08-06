@@ -25,9 +25,6 @@ class RecipeActivity : AppCompatActivity(){
     private lateinit var bottomNavigationView : BottomNavigationView
     private lateinit var navController : NavController
     private lateinit var toolbar:Toolbar
-//    private val sharedPreferences by lazy {
-//        getSharedPreferences("my_preferences", MODE_PRIVATE)
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,22 +59,20 @@ class RecipeActivity : AppCompatActivity(){
                 toolbar.visibility=View.GONE
 
             }
+            else if(destination.id == R.id.categoryFragment){
+                bottomNavigationView.visibility = View.GONE
+                toolbar.visibility=View.VISIBLE
+            }
             else {
                 bottomNavigationView.visibility = View.VISIBLE
                 toolbar.visibility=View.VISIBLE
             }
 
+
+
         }
 
     }
-
-//    override fun onDestroy() {
-//        val editor= sharedPreferences.edit()
-//        editor.putBoolean("splashShown",false)
-//        Log.d("splash", "ondestory")
-//        editor.commit()
-//        super.onDestroy()
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -88,7 +83,6 @@ class RecipeActivity : AppCompatActivity(){
         if(item.itemId == R.id.action_logout){
             FirebaseAuth.getInstance().signOut()
 
-            // TODO: should be modified to make the splash fragment doesn't show again
             val intent = Intent(this, AuthActivity::class.java)
 
             // finish current activity

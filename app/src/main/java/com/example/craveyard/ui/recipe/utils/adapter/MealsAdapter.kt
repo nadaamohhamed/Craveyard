@@ -50,11 +50,9 @@ class MealsAdapter(
 
           holder.getFavoriteBtn().setImageResource(
               if (isFavorite) {
-                  Log.d("asd","${isFavorite}")
                   R.drawable.ic_favorite
               }
               else {
-                  Log.d("asd","${isFavorite}")
                   R.drawable.ic_favorite_border
               }
           )
